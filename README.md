@@ -1,4 +1,4 @@
-# RSA-key-generator-Tiralabra
+# RSA-Encrypt-Decrypt-KeyGen-tiralabra
 
 RSA-avainparien luomiseen käytettävä Java-ohjelma.
 
