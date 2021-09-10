@@ -3,4 +3,4 @@
 RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytettävä Java-ohjelma.
 
 ## Dokumentaatio
-[Määrittelydokumentti](https://github.com/asianomainen/RSA-key-generator-Tiralabra/blob/main/dokumentaatio/maarittelydokumentti)
+[Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)
