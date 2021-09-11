@@ -1,6 +1,6 @@
 # Määrittelydokumentti
 
-Tätä ohjelma toteutetaan Java-kielellä ja sitä käytetään RSA-avainparien luomiseen, viestien salaamiseen ja salauksen purkamiseen. Javan lisäksi hallitsen Pythonin ja pystyn tekemään vertaisarviointeja Python-projekteista. Projektin dokumentaatio tullaan tekemään suomenkielellä.
+Tätä ohjelma toteutetaan Java-kielellä ja sitä käytetään RSA-avainparien luomiseen, viestien salaamiseen ja salauksen purkamiseen. Javan lisäksi hallitsen Pythonin ja pystyn tekemään vertaisarviointeja Python-projekteista. Projektin dokumentaatio tullaan tekemään suomenkielellä. Olen tietojenkäsittelytieteen kandiohjelmassa.
 
 ## Projektissa käytettävät algoritmit ja tietorakenteet
 
