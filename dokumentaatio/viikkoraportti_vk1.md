@@ -1,7 +1,7 @@
 ### [Tuntikirjanpito](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/tuntikirjanpito.md)
 
 ## Mitä olen tehnyt
-Ensimmäinen viikko meni RSA-salaukseen ja sen toimintaan perehtyen. Maven projekti on myös saatu alulle ja se lisättiin githubiin. Tarkempi erittely [tuntikirjanpidossa](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/tuntikirjanpito.md)
+Ensimmäinen viikko meni RSA-salaukseen ja sen toimintaan perehtyen. Maven projekti on myös saatu alulle ja se lisättiin githubiin. Tarkempi erittely [tuntikirjanpidossa](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/tuntikirjanpito.md).
 
 ## Ohjelman edistyminen
 Itse ohjelma on vielä täysin alkutekijöissä eikä mitään toiminnallisuuksia ole vielä pushattu githubiin.
