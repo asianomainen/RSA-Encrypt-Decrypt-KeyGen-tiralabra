@@ -40,7 +40,7 @@ public class MainMenuUi {
         this.grid.setPadding(new Insets(20));
         this.grid.setHgap(50);
         this.grid.setVgap(5);
-        this.grid.setPrefHeight(HEIGHT / 2);
+        this.grid.setPrefHeight(HEIGHT - 300);
 
         this.btnGenerate = new Button("Generate keys");
         this.btnGenerate.setStyle("-fx-font-size:40");
@@ -51,7 +51,7 @@ public class MainMenuUi {
         this.publicKeyArea = new TextArea("");
         this.publicKeyArea.setEditable(false);
         this.publicKeyArea.setWrapText(true);
-        this.publicKeyArea.setPrefSize(WIDTH - 100, HEIGHT - 200);
+        this.publicKeyArea.setPrefSize(WIDTH - 50, HEIGHT - 200);
 
         this.privateKeyLabel = new Label("Private key");
         this.privateKeyLabel.setStyle("-fx-font-size:20");
@@ -59,7 +59,7 @@ public class MainMenuUi {
         this.privateKeyArea = new TextArea("");
         this.privateKeyArea.setEditable(false);
         this.privateKeyArea.setWrapText(true);
-        this.privateKeyArea.setPrefSize(WIDTH - 100, HEIGHT - 200);
+        this.privateKeyArea.setPrefSize(WIDTH - 50, HEIGHT - 200);
 
         this.btnExit = new Button("Exit");
         this.btnExit.setStyle("-fx-font-size:40");
