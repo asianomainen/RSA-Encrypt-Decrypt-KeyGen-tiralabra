@@ -10,6 +10,10 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
+/**
+ * Class for creating a new RSA key pair.
+ */
+
 public class KeyGenerator {
     KeyPairGenerator kpg;
     Base64.Encoder encoder;
@@ -17,7 +21,12 @@ public class KeyGenerator {
     PublicKey pubKey;
     KeyFactory kf;
 
-    public KeyGenerator() throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {
+    /**
+     * Initiates the RSA key generator.
+     * @throws NoSuchAlgorithmException
+     */
+
+    public KeyGenerator() throws NoSuchAlgorithmException {
         kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
         kf = KeyFactory.getInstance("RSA");
@@ -33,6 +42,10 @@ public class KeyGenerator {
         writer.write("-----BEGIN RSA PUBLIC KEY-----\n" + encoder.encodeToString(pubKey.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n");
         writer.close();*/
     }
+
+    /**
+     * Generates a new RSA key pair.
+     */
 
     public void generateKeys() throws IOException, InvalidKeySpecException {
         // Generate they key pair
@@ -67,11 +80,19 @@ public class KeyGenerator {
         pubKey = kf.generatePublic(ksPublic);
     }
 
+    /**
+     * @return the public key in a readable (Base64) form
+     */
+
     public String getPublicKey() {
         return "-----BEGIN RSA PUBLIC KEY-----\n"
                 + encoder.encodeToString(pubKey.getEncoded())
                 + "\n-----END RSA PUBLIC KEY-----\n";
     }
+
+    /**
+     * @return the private key in a readable (Base64) form
+     */
 
     public String getPrivateKey() {
         return "-----BEGIN RSA PRIVATE KEY-----\n"
