@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class EncryptDecryptMenuUi {
+public class EncryptDecryptUi {
     public VBox vbMain;
     public HBox hbEncryptDecrypt;
     public HBox hbEncryptRadio;
@@ -42,7 +42,7 @@ public class EncryptDecryptMenuUi {
     public Separator separator;
     public Button btnBackToMainMenu;
 
-    public EncryptDecryptMenuUi(int width, int height) {
+    public EncryptDecryptUi(int width, int height) {
         vbMain = new VBox();
         vbMain.setPadding(new Insets(20, 20, 20, 20));
         vbMain.setSpacing(20);
@@ -56,11 +56,9 @@ public class EncryptDecryptMenuUi {
         hbEncryptDecrypt.setPrefSize(width, height);
 
         vbEncrypt = new VBox();
-        // vbEncrypt.setSpacing(20);
         vbEncrypt.setAlignment(Pos.CENTER);
 
         vbDecrypt = new VBox();
-        // vbDecrypt.setSpacing(20);
         vbDecrypt.setAlignment(Pos.CENTER);
 
         hbEncryptRadio = new HBox();
