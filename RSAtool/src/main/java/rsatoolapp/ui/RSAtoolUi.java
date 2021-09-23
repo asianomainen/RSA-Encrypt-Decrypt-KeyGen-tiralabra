@@ -10,29 +10,33 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class RSAtoolUi extends Application {
-    private final static int WIDTH = 960;
-    private final static int HEIGHT = 960;
+    private final static int width = 720;
+    private final static int height = 720;
 
     @Override
-    public void start(Stage stage) throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {
-        MainMenuUi mainMenuUi = new MainMenuUi(WIDTH, HEIGHT);
+    public void start(Stage stage) throws NoSuchAlgorithmException, IOException {
+        MainMenuUi mainMenuUi = new MainMenuUi(width, height);
         Scene mainMenuScene = mainMenuUi.getScene();
+        KeyGeneratorUi keyGenUi = new KeyGeneratorUi(width, height);
+        Scene keyGenScene = keyGenUi.getScene();
         KeyGenerator kg = new KeyGenerator();
 
-        stage.setResizable(false);
         stage.setScene(mainMenuScene);
         stage.setTitle("RSA Tool");
         stage.show();
 
+        mainMenuUi.btnGenerator.setOnAction(event -> stage.setScene(keyGenScene));
+        keyGenUi.btnBackToMainMenu.setOnAction(event -> stage.setScene(mainMenuScene));
         mainMenuUi.btnExit.setOnAction(event -> stage.close());
-        mainMenuUi.btnGenerate.setOnAction(event -> {
+
+        keyGenUi.btnGenerate.setOnAction(event -> {
             try {
                 kg.generateKeys();
             } catch (IOException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
-            mainMenuUi.publicKeyArea.setText(kg.getPublicKey());
-            mainMenuUi.privateKeyArea.setText(kg.getPrivateKey());
+            keyGenUi.publicKeyArea.setText(kg.getPublicKey());
+            keyGenUi.privateKeyArea.setText(kg.getPrivateKey());
         });
     }
 

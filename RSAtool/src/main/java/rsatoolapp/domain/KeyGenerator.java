@@ -26,21 +26,11 @@ public class KeyGenerator {
      * @throws NoSuchAlgorithmException
      */
 
-    public KeyGenerator() throws NoSuchAlgorithmException {
+    public KeyGenerator() throws NoSuchAlgorithmException, IOException {
         kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
         kf = KeyFactory.getInstance("RSA");
         encoder = Base64.getEncoder();
-
-/*        // Write the private key in Base64 to a file
-        Writer writer = new FileWriter("private.key");
-        writer.write("-----BEGIN RSA PRIVATE KEY-----\n" + encoder.encodeToString(pvtKey.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n");
-        writer.close();
-
-        // Write the public key in Base64 to a file
-        writer = new FileWriter("public.pub");
-        writer.write("-----BEGIN RSA PUBLIC KEY-----\n" + encoder.encodeToString(pubKey.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n");
-        writer.close();*/
     }
 
     /**
@@ -48,7 +38,7 @@ public class KeyGenerator {
      */
 
     public void generateKeys() throws IOException, InvalidKeySpecException {
-        // Generate they key pair
+        // Generate the key pair
         KeyPair kp = kpg.generateKeyPair();
         Key pb = kp.getPublic();
         Key pt = kp.getPrivate();
@@ -78,6 +68,16 @@ public class KeyGenerator {
         // Generate public key
         X509EncodedKeySpec ksPublic = new X509EncodedKeySpec(bytes);
         pubKey = kf.generatePublic(ksPublic);
+
+        // Write the private key in Base64 to a file
+        Writer writer = new FileWriter("private.key");
+        writer.write("-----BEGIN RSA PRIVATE KEY-----\n" + encoder.encodeToString(pvtKey.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n");
+        writer.close();
+
+        // Write the public key in Base64 to a file
+        writer = new FileWriter("public.pub");
+        writer.write("-----BEGIN RSA PUBLIC KEY-----\n" + encoder.encodeToString(pubKey.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n");
+        writer.close();
     }
 
     /**
