@@ -16,7 +16,6 @@ public class KeyGeneratorUi {
     public VBox vbPublic;
     public VBox vbPrivate;
     public GridPane grid;
-    public ToolBar toolBar;
     public Button btnGenerate;
     public Label publicKeyLabel;
     public TextArea publicKeyArea;
@@ -25,60 +24,57 @@ public class KeyGeneratorUi {
     public Button btnBackToMainMenu;
 
     public KeyGeneratorUi(int width, int height) {
-        this.vbButtons = new VBox();
-        this.vbButtons.setPadding(new Insets(20, 20, 20, 20));
-        this.vbButtons.setAlignment(Pos.CENTER);
-        this.vbButtons.setPrefSize(width, height);
+        vbButtons = new VBox();
+        vbButtons.setPadding(new Insets(20, 20, 20, 20));
+        vbButtons.setAlignment(Pos.CENTER);
+        vbButtons.setPrefSize(width, height);
 
-        this.vbPublic = new VBox();
-        this.vbPublic.setSpacing(20);
-        this.vbPublic.setAlignment(Pos.CENTER);
+        vbPublic = new VBox();
+        vbPublic.setSpacing(20);
+        vbPublic.setAlignment(Pos.CENTER);
 
-        this.vbPrivate = new VBox();
-        this.vbPrivate.setAlignment(Pos.CENTER);
+        vbPrivate = new VBox();
+        vbPrivate.setAlignment(Pos.CENTER);
 
-        this.grid = new GridPane();
-        this.grid.setPadding(new Insets(20));
-        this.grid.setHgap(50);
-        this.grid.setVgap(5);
-        this.grid.setPrefHeight(height);
-        this.grid.setAlignment(Pos.CENTER);
+        grid = new GridPane();
+        grid.setPadding(new Insets(20));
+        grid.setHgap(50);
+        grid.setVgap(5);
+        grid.setPrefHeight(height);
+        grid.setAlignment(Pos.CENTER);
 
-        this.btnGenerate = new Button("Generate keys");
-        this.btnGenerate.setStyle("-fx-font-size:30");
+        btnGenerate = new Button("Generate keys");
+        btnGenerate.setStyle("-fx-font-size:30");
 
-        this.toolBar = new ToolBar();
-        this.toolBar.getItems().add(btnGenerate);
+        publicKeyLabel = new Label("Public key");
+        publicKeyLabel.setStyle("-fx-font-size:20");
 
-        this.publicKeyLabel = new Label("Public key");
-        this.publicKeyLabel.setStyle("-fx-font-size:20");
+        publicKeyArea = new TextArea("");
+        publicKeyArea.setEditable(false);
+        publicKeyArea.setWrapText(true);
+        publicKeyArea.setPrefSize(width - 50, 2000);
 
-        this.publicKeyArea = new TextArea("");
-        this.publicKeyArea.setEditable(false);
-        this.publicKeyArea.setWrapText(true);
-        this.publicKeyArea.setPrefSize(width - 50, 1080);
+        privateKeyLabel = new Label("Private key");
+        privateKeyLabel.setStyle("-fx-font-size:20");
 
-        this.privateKeyLabel = new Label("Private key");
-        this.privateKeyLabel.setStyle("-fx-font-size:20");
+        privateKeyArea = new TextArea("");
+        privateKeyArea.setEditable(false);
+        privateKeyArea.setWrapText(true);
+        privateKeyArea.setPrefSize(width - 50, 2000);
 
-        this.privateKeyArea = new TextArea("");
-        this.privateKeyArea.setEditable(false);
-        this.privateKeyArea.setWrapText(true);
-        this.privateKeyArea.setPrefSize(width - 50, 1080);
+        btnBackToMainMenu = new Button("Back to main menu");
+        btnBackToMainMenu.setStyle("-fx-font-size:30");
 
-        this.btnBackToMainMenu = new Button("Back to main menu");
-        this.btnBackToMainMenu.setStyle("-fx-font-size:30");
-
-        this.grid.add(publicKeyLabel, 0, 0);
-        this.grid.add(publicKeyArea, 0, 1);
-        this.grid.add(privateKeyLabel, 1, 0);
-        this.grid.add(privateKeyArea, 1, 1);
+        grid.add(publicKeyLabel, 0, 0);
+        grid.add(publicKeyArea, 0, 1);
+        grid.add(privateKeyLabel, 1, 0);
+        grid.add(privateKeyArea, 1, 1);
         GridPane.setHalignment(publicKeyLabel, HPos.CENTER);
         GridPane.setHalignment(privateKeyLabel, HPos.CENTER);
-        this.vbButtons.getChildren().addAll(this.btnGenerate, this.grid, this.btnBackToMainMenu);
+        vbButtons.getChildren().addAll(btnGenerate, grid, btnBackToMainMenu);
     }
 
     public Scene getScene() {
-        return new Scene(this.vbButtons);
+        return new Scene(vbButtons);
     }
 }

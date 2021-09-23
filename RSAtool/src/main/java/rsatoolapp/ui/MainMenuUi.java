@@ -12,22 +12,22 @@ public class MainMenuUi {
     public Button btnExit;
 
     public MainMenuUi(int width, int height) {
-        this.vbButtons = new VBox();
-        this.vbButtons.setSpacing(20);
-        this.vbButtons.setAlignment(Pos.CENTER);
-        this.vbButtons.setPrefSize(width, height);
+        vbButtons = new VBox();
+        vbButtons.setSpacing(20);
+        vbButtons.setAlignment(Pos.CENTER);
+        vbButtons.setPrefSize(width, height);
 
-        this.btnGenerator = new Button("RSA key generator");
-        this.btnGenerator.setStyle("-fx-font-size:40");
-        this.btnEncryptDecrypt = new Button("Encrypt/Decrypt message");
-        this.btnEncryptDecrypt.setStyle("-fx-font-size:40");
-        this.btnExit = new Button("Exit");
-        this.btnExit.setStyle("-fx-font-size:40");
+        btnGenerator = new Button("RSA key generator");
+        btnGenerator.setStyle("-fx-font-size:40");
+        btnEncryptDecrypt = new Button("Encrypt/Decrypt message");
+        btnEncryptDecrypt.setStyle("-fx-font-size:40");
+        btnExit = new Button("Exit");
+        btnExit.setStyle("-fx-font-size:40");
 
-        this.vbButtons.getChildren().addAll(this.btnGenerator, this.btnEncryptDecrypt, this.btnExit);
+        vbButtons.getChildren().addAll(btnGenerator, btnEncryptDecrypt, btnExit);
     }
 
     public Scene getScene() {
-        return new Scene(this.vbButtons);
+        return new Scene(vbButtons);
     }
 }
