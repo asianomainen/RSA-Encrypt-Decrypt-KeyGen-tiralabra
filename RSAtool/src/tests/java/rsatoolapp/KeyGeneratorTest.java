@@ -4,6 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import rsatoolapp.domain.KeyGenerator;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
@@ -14,24 +17,26 @@ public class KeyGeneratorTest {
     KeyGenerator kg;
 
     @Before
-    public void setUp() throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {
+    public void setUp() throws NoSuchAlgorithmException {
         kg = new KeyGenerator();
     }
 
     @Test
-    public void publicKeyIsGenerated() throws IOException, InvalidKeySpecException {
+    public void publicKeyIsGenerated() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
+            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
-        assertTrue(kg.getPublicKey().startsWith("-----BEGIN RSA PUBLIC KEY-----"));
+        assertTrue(kg.getPublicKey().length() > 0);
     }
 
     @Test
-    public void privateKeyIsGenerated() throws IOException, InvalidKeySpecException {
+    public void privateKeyIsGenerated() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
+            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
-        assertTrue(kg.getPrivateKey().startsWith("-----BEGIN RSA PRIVATE KEY-----"));
+        assertTrue(kg.getPrivateKey().length() > 0);
     }
 
     @Test
-    public void publicKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException {
+    public void publicKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
         String publicKey1 = kg.getPublicKey();
 
@@ -42,7 +47,7 @@ public class KeyGeneratorTest {
     }
 
     @Test
-    public void privateKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException {
+    public void privateKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
         String privateKey1 = kg.getPrivateKey();
 
