@@ -16,17 +16,17 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class RSAtoolUi extends Application {
-    private final static int width = 960;
-    private final static int height = 960;
+    private final static int WIDTH = 960;
+    private final static int HEIGHT = 960;
 
     @Override
-    public void start(Stage stage) throws NoSuchAlgorithmException, IOException {
-        MainMenuUi mainMenuUi = new MainMenuUi(width, height);
+    public void start(Stage stage) throws NoSuchAlgorithmException {
+        MainMenuUi mainMenuUi = new MainMenuUi(WIDTH, HEIGHT);
         Scene mainMenuScene = mainMenuUi.getScene();
-        KeyGeneratorUi keyGenUi = new KeyGeneratorUi(width, height);
+        KeyGeneratorUi keyGenUi = new KeyGeneratorUi(WIDTH, HEIGHT);
         Scene keyGenScene = keyGenUi.getScene();
         KeyGenerator kg = new KeyGenerator();
-        EncryptDecryptUi encryptDecryptUi = new EncryptDecryptUi(width, height);
+        EncryptDecryptUi encryptDecryptUi = new EncryptDecryptUi(WIDTH, HEIGHT);
         Scene encryptDecryptScene = encryptDecryptUi.getScene();
         EncryptDecrypt encDec = new EncryptDecrypt();
 
@@ -53,7 +53,7 @@ public class RSAtoolUi extends Application {
 
         encryptDecryptUi.encryptBtn.setOnAction(event -> {
             try {
-                encDec.encrypt(kg, encryptDecryptUi.encryptTextArea.getText(), encryptDecryptUi.encryptKeyArea.getText());
+                encDec.encrypt(encryptDecryptUi.encryptTextArea.getText(), encryptDecryptUi.encryptKeyArea.getText());
                 encryptDecryptUi.encryptedTextArea.setText(encDec.getEncryptedMessage());
             } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
                     IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
@@ -63,7 +63,7 @@ public class RSAtoolUi extends Application {
 
         encryptDecryptUi.decryptBtn.setOnAction(event -> {
             try {
-                encDec.decrypt(kg, encryptDecryptUi.decryptTextArea.getText(), encryptDecryptUi.decryptKeyArea.getText());
+                encDec.decrypt(encryptDecryptUi.decryptTextArea.getText(), encryptDecryptUi.decryptKeyArea.getText());
                 encryptDecryptUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
             } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
                     IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException |

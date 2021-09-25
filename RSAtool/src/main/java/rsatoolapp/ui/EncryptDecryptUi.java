@@ -169,9 +169,9 @@ public class EncryptDecryptUi {
         hbEncryptRadio.getChildren().addAll(encryptPublicKeyButton, encryptPrivateKeyButton);
         hbDecryptRadio.getChildren().addAll(decryptPublicKeyButton, decryptPrivateKeyButton);
         vbEncrypt.getChildren().addAll(encryptLabel, encryptTextLabel, encryptTextArea, encryptKeyLabel, hbEncryptRadio,
-                                       encryptKeyArea, clickToEncryptLabel, encryptBtn, encryptedTextLabel, encryptedTextArea);
-        vbDecrypt.getChildren().addAll(decryptLabel, decryptTextLabel, decryptTextArea, decryptKeyLabel,hbDecryptRadio,
-                                       decryptKeyArea, clickToDecryptLabel, decryptBtn, decryptedTextLabel, decryptedTextArea);
+                encryptKeyArea, clickToEncryptLabel, encryptBtn, encryptedTextLabel, encryptedTextArea);
+        vbDecrypt.getChildren().addAll(decryptLabel, decryptTextLabel, decryptTextArea, decryptKeyLabel, hbDecryptRadio,
+                decryptKeyArea, clickToDecryptLabel, decryptBtn, decryptedTextLabel, decryptedTextArea);
         hbEncryptDecrypt.getChildren().addAll(vbEncrypt, separator, vbDecrypt);
         vbMain.getChildren().addAll(hbEncryptDecrypt, btnBackToMainMenu);
     }

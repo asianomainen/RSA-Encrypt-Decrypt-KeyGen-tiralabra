@@ -31,7 +31,7 @@ public class KeyGenerator {
      * @throws NoSuchAlgorithmException
      */
 
-    public KeyGenerator() throws NoSuchAlgorithmException, IOException {
+    public KeyGenerator() throws NoSuchAlgorithmException {
         kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
         kf = KeyFactory.getInstance("RSA");

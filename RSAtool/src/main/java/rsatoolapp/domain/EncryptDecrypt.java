@@ -21,7 +21,7 @@ public class EncryptDecrypt {
         decoder = Base64.getDecoder();
     }
 
-    public void encrypt(KeyGenerator kg, String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
+    public void encrypt(String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
         // Converts String to PublicKey
         byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
@@ -37,7 +37,7 @@ public class EncryptDecrypt {
         encryptedMessage = Base64.getEncoder().encodeToString(encryptedMessageBytes);
     }
 
-    public void decrypt(KeyGenerator kg, String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException, InvalidKeySpecException {
+    public void decrypt(String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException, InvalidKeySpecException {
         // Converts String to PrivateKey
         byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(bytes);
