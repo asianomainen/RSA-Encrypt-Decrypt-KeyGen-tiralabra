@@ -17,4 +17,13 @@
 | 18.9. | 1    | Lisättiin testikattavuuden seuraaminen Jacocolla ja Javadoc |
 | Yhteensä | 7    |
 
-### Aikaa käytetty yhteensä: 16 tuntia
+
+### Viikko 3
+| pvm | aika (h) | mitä tein  |
+| :----:|:-----| :-----|
+| 23.9. | 1    | Käyttöliittymän eriyttäminen päävalikkoon ja avaimien luomisen näkymään |
+| 24.9. | 5    | Luotiin viestien salaamisen ja salauksen purkamisen käyttöliittymä ja sovelluslogiikka|
+| 25.9. | 2    | Koodin refaktorointia ja testikattavuuden laajentamista |
+| Yhteensä | 8    |
+
+### Aikaa käytetty yhteensä: 24 tuntia
