@@ -21,15 +21,12 @@ public class EncryptDecrypt {
         decoder = Base64.getDecoder();
     }
 
-    public void encrypt(String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
+    public void encrypt(String message, String key, Boolean isPublicKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
         // Converts String to PublicKey
-        byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
-        KeyFactory kf = KeyFactory.getInstance("RSA");
-        PublicKey pubKey = kf.generatePublic(keySpec);
+        Key encryptKey = getKey(key, isPublicKey);
 
         Cipher encryptCipher = Cipher.getInstance("RSA");
-        encryptCipher.init(Cipher.ENCRYPT_MODE, pubKey);
+        encryptCipher.init(Cipher.ENCRYPT_MODE, encryptKey);
 
         byte[] secretMessageBytes = message.getBytes(StandardCharsets.UTF_8);
         byte[] encryptedMessageBytes = encryptCipher.doFinal(secretMessageBytes);
@@ -37,18 +34,29 @@ public class EncryptDecrypt {
         encryptedMessage = Base64.getEncoder().encodeToString(encryptedMessageBytes);
     }
 
-    public void decrypt(String message, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException, InvalidKeySpecException {
+    public void decrypt(String message, String key, Boolean isPublicKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException, InvalidKeySpecException {
         // Converts String to PrivateKey
-        byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(bytes);
-        KeyFactory kf = KeyFactory.getInstance("RSA");
-        PrivateKey pvtKey = kf.generatePrivate(keySpec);
+        Key decryptKey = getKey(key, isPublicKey);
 
         Cipher decryptCipher = Cipher.getInstance("RSA");
-        decryptCipher.init(Cipher.DECRYPT_MODE, pvtKey);
+        decryptCipher.init(Cipher.DECRYPT_MODE, decryptKey);
         byte[] decryptedMessageBytes = decryptCipher.doFinal(decoder.decode(message.getBytes(StandardCharsets.UTF_8)));
 
         decryptedMessage =  new String(decryptedMessageBytes, StandardCharsets.UTF_8);
+    }
+
+
+    private Key getKey(String key, Boolean isPublicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
+        KeyFactory kf = KeyFactory.getInstance("RSA");
+
+        if (isPublicKey) {
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
+            return kf.generatePublic(keySpec);
+        } else {
+            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(bytes);
+            return kf.generatePrivate(keySpec);
+        }
     }
 
     public String getEncryptedMessage() {

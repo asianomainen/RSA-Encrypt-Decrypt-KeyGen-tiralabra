@@ -53,7 +53,7 @@ public class RSAtoolUi extends Application {
 
         encryptDecryptUi.encryptBtn.setOnAction(event -> {
             try {
-                encDec.encrypt(encryptDecryptUi.encryptTextArea.getText(), encryptDecryptUi.encryptKeyArea.getText());
+                encDec.encrypt(encryptDecryptUi.encryptTextArea.getText(), encryptDecryptUi.encryptKeyArea.getText(), encryptDecryptUi.encryptPublicKeyButton.isSelected());
                 encryptDecryptUi.encryptedTextArea.setText(encDec.getEncryptedMessage());
             } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
                     IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
@@ -63,7 +63,7 @@ public class RSAtoolUi extends Application {
 
         encryptDecryptUi.decryptBtn.setOnAction(event -> {
             try {
-                encDec.decrypt(encryptDecryptUi.decryptTextArea.getText(), encryptDecryptUi.decryptKeyArea.getText());
+                encDec.decrypt(encryptDecryptUi.decryptTextArea.getText(), encryptDecryptUi.decryptKeyArea.getText(), encryptDecryptUi.decryptPublicKeyButton.isSelected());
                 encryptDecryptUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
             } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
                     IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException |
