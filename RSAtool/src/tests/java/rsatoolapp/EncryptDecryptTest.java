@@ -24,12 +24,12 @@ public class EncryptDecryptTest {
         ed = new EncryptDecrypt();
     }
 
-/*    @Test
+    @Test
     public void messageIsEncrypted() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
             IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
         String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey());
+        ed.encrypt(msg, kg.getPublicKey(), true);
         String encryptedMessage = ed.getEncryptedMessage();
         assertNotEquals(msg, encryptedMessage);
     }
@@ -39,8 +39,8 @@ public class EncryptDecryptTest {
             IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
         String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey());
-        ed.decrypt(ed.getEncryptedMessage(), kg.getPrivateKey());
+        ed.encrypt(msg, kg.getPublicKey(), true);
+        ed.decrypt(ed.getEncryptedMessage(), kg.getPrivateKey(), false);
         String decryptedMessage = ed.getDecryptedMessage();
         assertEquals(msg, decryptedMessage);
     }
@@ -50,11 +50,11 @@ public class EncryptDecryptTest {
             IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
         String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey());
+        ed.encrypt(msg, kg.getPublicKey(), true);
 
         String encryptedMessage1 = ed.getEncryptedMessage();
         String encryptedMessage2 = ed.getEncryptedMessage();
 
         assertEquals(encryptedMessage1, encryptedMessage2);
-    }*/
+    }
 }

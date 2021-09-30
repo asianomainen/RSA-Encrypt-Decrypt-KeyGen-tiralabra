@@ -1,11 +1,9 @@
 package rsatoolapp.domain;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +26,6 @@ public class KeyGenerator {
 
     /**
      * Initializes the RSA key generator.
-     * @throws NoSuchAlgorithmException
      */
 
     public KeyGenerator() throws NoSuchAlgorithmException {
