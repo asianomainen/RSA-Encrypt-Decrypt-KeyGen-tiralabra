@@ -27,7 +27,7 @@ public class KeyGenerator {
     KeyFactory kf;
 
     /**
-     * Initiates the RSA key generator.
+     * Initializes the RSA key generator.
      * @throws NoSuchAlgorithmException
      */
 

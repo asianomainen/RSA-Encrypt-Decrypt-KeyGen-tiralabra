@@ -12,14 +12,29 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
+/**
+ * Class for encrypting/decrypting a message.
+ */
+
 public class EncryptDecrypt {
     String encryptedMessage;
     String decryptedMessage;
     Base64.Decoder decoder;
 
+    /**
+     * Initializes the encrypt/decrypt.
+     */
+
     public EncryptDecrypt() {
         decoder = Base64.getDecoder();
     }
+
+    /**
+     * Encrypts a message.
+     * @param message to be encrypted
+     * @param key the RSA key used to encrypt the message. Can be public or private key
+     * @param isPublicKey true if a public key is used, false if private key is used
+     */
 
     public void encrypt(String message, String key, Boolean isPublicKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
         // Converts String to PublicKey
@@ -34,6 +49,13 @@ public class EncryptDecrypt {
         encryptedMessage = Base64.getEncoder().encodeToString(encryptedMessageBytes);
     }
 
+    /**
+     * Decrypts a message.
+     * @param message to be encrypted
+     * @param key the RSA key used to encrypt the message. Can be public or private key
+     * @param isPublicKey true if a public key is used, false if private key is used
+     */
+
     public void decrypt(String message, String key, Boolean isPublicKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException, InvalidKeySpecException {
         // Converts String to PrivateKey
         Key decryptKey = getKey(key, isPublicKey);
@@ -45,6 +67,12 @@ public class EncryptDecrypt {
         decryptedMessage =  new String(decryptedMessageBytes, StandardCharsets.UTF_8);
     }
 
+    /**
+     * Transforms the key from string to the required key spec for encryption/decryption
+     * @param key the RSA key used to encrypt the message. Can be public or private key
+     * @param isPublicKey true if a public key is used, false if private key is used
+     * @return the key in specified form
+     */
 
     private Key getKey(String key, Boolean isPublicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
         byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
@@ -59,9 +87,19 @@ public class EncryptDecrypt {
         }
     }
 
+    /**
+     * Returns the message in an encrypted Base64 form
+     * @return the encrypted message
+     */
+
     public String getEncryptedMessage() {
         return encryptedMessage;
     }
+
+    /**
+     * Returns the message in a decrypted Base64 form
+     * @return the decrypted message
+     */
 
     public String getDecryptedMessage() {
         return decryptedMessage;
