@@ -39,7 +39,8 @@ public class KeyGenerator {
      * Generates a new RSA key pair.
      */
 
-    public void generateKeys() throws IOException, InvalidKeySpecException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+    public void generateKeys() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
+            NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         // Generate the key pair
         KeyPair kp = kpg.generateKeyPair();
         Key pb = kp.getPublic();
@@ -73,12 +74,16 @@ public class KeyGenerator {
 
         // Write the private key in Base64 to a file
         Writer writer = new FileWriter("private.key");
-        writer.write("-----BEGIN RSA PRIVATE KEY-----\n" + encoder.encodeToString(pvtKey.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n");
+        writer.write("-----BEGIN RSA PRIVATE KEY-----\n"
+                + encoder.encodeToString(pvtKey.getEncoded())
+                + "\n-----END RSA PRIVATE KEY-----\n");
         writer.close();
 
         // Write the public key in Base64 to a file
         writer = new FileWriter("public.pub");
-        writer.write("-----BEGIN RSA PUBLIC KEY-----\n" + encoder.encodeToString(pubKey.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n");
+        writer.write("-----BEGIN RSA PUBLIC KEY-----\n"
+                + encoder.encodeToString(pubKey.getEncoded())
+                + "\n-----END RSA PUBLIC KEY-----\n");
         writer.close();
     }
 

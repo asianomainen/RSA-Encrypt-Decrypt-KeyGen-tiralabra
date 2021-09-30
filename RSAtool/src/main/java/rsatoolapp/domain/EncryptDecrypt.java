@@ -7,9 +7,7 @@ import javax.crypto.NoSuchPaddingException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
+import java.security.spec.*;
 import java.util.Base64;
 
 /**
@@ -77,6 +75,7 @@ public class EncryptDecrypt {
     private Key getKey(String key, Boolean isPublicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
         byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
         KeyFactory kf = KeyFactory.getInstance("RSA");
+        //RSAPrivateKeySpec privateSpec = new RSAPrivateKeySpec();
 
         if (isPublicKey) {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
