@@ -43,7 +43,7 @@ public class RSAtoolUi extends Application {
         keyGenUi.btnGenerate.setOnAction(event -> {
             try {
                 kg.generateKeys();
-            } catch (IOException | InvalidKeySpecException | NoSuchPaddingException | NoSuchAlgorithmException |
+            } catch (IOException | InvalidKeySpecException | NoSuchPaddingException |
                     InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
                 e.printStackTrace();
             }

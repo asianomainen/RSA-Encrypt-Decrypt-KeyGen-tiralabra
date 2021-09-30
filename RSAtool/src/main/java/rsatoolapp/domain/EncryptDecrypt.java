@@ -75,7 +75,8 @@ public class EncryptDecrypt {
     private Key getKey(String key, Boolean isPublicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
         byte[] bytes = decoder.decode(key.getBytes(StandardCharsets.UTF_8));
         KeyFactory kf = KeyFactory.getInstance("RSA");
-        //RSAPrivateKeySpec privateSpec = new RSAPrivateKeySpec();
+/*      RSAPrivateKeySpec privateSpec = new RSAPrivateKeySpec();
+        Key privateKey = kf.generatePrivate(privateSpec);*/
 
         if (isPublicKey) {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);

@@ -9,7 +9,7 @@ public class SelfKeyGenerator {
         Random rnd1 = new Random(System.currentTimeMillis());
         Random rnd2 = new Random(System.currentTimeMillis() * 10);
 
-        // valitaan kaksi suurta alkulukua niin, että p ≠ q
+        // valitaan kaksi suurta alkulukua p ja q niin, että p ≠ q
         // probablePrime metodin tuottama luku ei ole alkuluku
         // alle 2^(-100) todennäköisyydellä, eli 1 / 1 267 650 600 228 229 401 496 703 205 376
         // (1 suhde 1,27 kvintiljoonaan)
@@ -20,9 +20,9 @@ public class SelfKeyGenerator {
         BigInteger n = p.multiply(q);
 
         // määritellään ϕ(n)
-        BigInteger p_1 = p.subtract(new BigInteger("1"));
-        BigInteger q_1 = q.subtract(new BigInteger("1"));
-        BigInteger phi_n = p_1.multiply(q_1);
+        BigInteger pMinus1 = p.subtract(new BigInteger("1"));
+        BigInteger qMinus1 = q.subtract(new BigInteger("1"));
+        BigInteger phiN = pMinus1.multiply(qMinus1);
 
         // alustetaan e
         int pubKey = ThreadLocalRandom.current().nextInt(25, 100);
@@ -30,9 +30,9 @@ public class SelfKeyGenerator {
         // kasvatetaan e:n arvoa niin pitkään, että gcd(e, ϕ(n)) = 1
         // gcd = greatest common divisor = suurin yhteinen tekijä
         while (true) {
-            BigInteger bigInt_GCD = phi_n.gcd(new BigInteger("" + pubKey));
+            BigInteger gcd = phiN.gcd(new BigInteger("" + pubKey));
 
-            if (bigInt_GCD.equals(BigInteger.ONE)) {
+            if (gcd.equals(BigInteger.ONE)) {
                 break;
             }
 
@@ -43,7 +43,7 @@ public class SelfKeyGenerator {
         BigInteger e = new BigInteger("" + pubKey);
 
         // määritellään yksityisen avaimen eksponentiksi d
-        BigInteger d = e.modInverse(phi_n);
+        BigInteger d = e.modInverse(phiN);
 
         System.out.println("p = " + p);
         System.out.println("q = " + q);
