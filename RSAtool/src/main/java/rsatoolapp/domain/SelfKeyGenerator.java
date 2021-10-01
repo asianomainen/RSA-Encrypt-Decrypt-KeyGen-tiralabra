@@ -2,7 +2,6 @@ package rsatoolapp.domain;
 
 import java.math.BigInteger;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class SelfKeyGenerator {
     public static void main(String[] args) {
@@ -24,23 +23,22 @@ public class SelfKeyGenerator {
         BigInteger qMinus1 = q.subtract(new BigInteger("1"));
         BigInteger phiN = pMinus1.multiply(qMinus1);
 
-        // alustetaan e
-        int pubKey = ThreadLocalRandom.current().nextInt(25, 100);
+        // määritellään julkisen avaimen eksponentiksi e
+        BigInteger e = new BigInteger("65537");
 
         // kasvatetaan e:n arvoa niin pitkään, että gcd(e, ϕ(n)) = 1
         // gcd = greatest common divisor = suurin yhteinen tekijä
         while (true) {
-            BigInteger gcd = phiN.gcd(new BigInteger("" + pubKey));
+            BigInteger gcd = phiN.gcd(e);
 
             if (gcd.equals(BigInteger.ONE)) {
                 break;
             }
 
-            pubKey++;
+             e = e.add(BigInteger.ONE);
         }
 
-        // määritellään julkisen avaimen eksponentiksi e
-        BigInteger e = new BigInteger("" + pubKey);
+        e = new BigInteger("" + e);
 
         // määritellään yksityisen avaimen eksponentiksi d
         BigInteger d = e.modInverse(phiN);
@@ -48,7 +46,26 @@ public class SelfKeyGenerator {
         System.out.println("p = " + p);
         System.out.println("q = " + q);
 
-        System.out.println("Public key: " + e + ", " + n);
-        System.out.println("Private key: " + d + ", " + n);
+        System.out.println("\nJulkinen avain: " + e + ", " + n);
+        System.out.println("Yksityinen avain: " + d + ", " + n);
+
+        String msg = "Salainen viesti";
+        System.out.println("\nViesti: " + msg);
+
+        BigInteger msgInBigInt = new BigInteger(msg.getBytes());
+        BigInteger encrypted = encrypt(e, n, msgInBigInt);
+        System.out.println("Salattu viesti: " + encrypted);
+
+        BigInteger decrypted = decrypt(d, n, encrypted);
+        String msgInString = new String(decrypted.toByteArray());
+        System.out.println("Purettu viesti: " + msgInString);
+    }
+
+    public static BigInteger encrypt(BigInteger e, BigInteger n, BigInteger msg) {
+        return msg.modPow(e, n);
+    }
+
+    public static BigInteger decrypt(BigInteger d, BigInteger n, BigInteger msg) {
+        return msg.modPow(d, n);
     }
 }
