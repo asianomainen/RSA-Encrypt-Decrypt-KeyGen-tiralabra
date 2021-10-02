@@ -3,7 +3,8 @@
 RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytettävä Java-ohjelma.
 
 ## Dokumentaatio
-[Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)
+[Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)  
+[Toteutusdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)
 
 ### Viikkoraportit
 [Viikko 1](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk1.md)
