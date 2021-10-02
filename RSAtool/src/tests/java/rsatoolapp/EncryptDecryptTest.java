@@ -51,7 +51,7 @@ public class EncryptDecryptTest {
     }
 
     @Test
-    public void encryptedMessagesDoNotEqualIfEncryptedAgain() {
+    public void differentMessageDoesNotHaveTheSameEncryptedMessage() {
         kg.generateKeys();
 
         String msg = "Secret";
@@ -60,9 +60,35 @@ public class EncryptDecryptTest {
         ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
         BigInteger encryptedMessage1 = ed.getEncryptedMessage();
 
+        msg = "Top Secret";
+
         ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
         BigInteger encryptedMessage2 = ed.getEncryptedMessage();
 
-        assertEquals(encryptedMessage1, encryptedMessage2);
+        assertNotEquals(encryptedMessage1, encryptedMessage2);
+    }
+
+    @Test
+    public void decryptedMessagesDoNotEqualIfDecryptedWithWrongKey() {
+        kg.generateKeys();
+
+        String msg = "Secret";
+        RSAKey pubKey = kg.getPublicKey();
+        RSAKey pvtKey = kg.getPrivateKey();
+
+        ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
+        ed.decrypt(pubKey.getModulus(), pvtKey.getExponent(), ed.getEncryptedMessage());
+
+        String decryptedMessage1 = ed.getDecryptedMessage();
+
+        kg.generateKeys();
+
+        pvtKey = kg.getPrivateKey();
+
+        ed.decrypt(pubKey.getModulus(), pvtKey.getExponent(), ed.getEncryptedMessage());
+
+        String decryptedMessage2 = ed.getDecryptedMessage();
+
+        assertNotEquals(decryptedMessage1, decryptedMessage2);
     }
 }
