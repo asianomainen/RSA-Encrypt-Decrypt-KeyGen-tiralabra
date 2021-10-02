@@ -3,6 +3,7 @@ package rsatoolapp;
 import org.junit.Before;
 import org.junit.Test;
 import rsatoolapp.domain.KeyGenerator;
+import rsatoolapp.domain.RSAKey;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -20,28 +21,25 @@ public class KeyGeneratorTest {
     public void setUp() throws NoSuchAlgorithmException {
         kg = new KeyGenerator();
     }
-
     @Test
-    public void publicKeyIsGenerated() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
-            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void publicKeyIsGenerated() {
         kg.generateKeys();
-        assertTrue(kg.getPublicKey().length() > 0);
+        assertNotNull(kg.getPublicKey());
     }
 
     @Test
-    public void privateKeyIsGenerated() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
-            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void privateKeyIsGenerated() {
         kg.generateKeys();
-        assertTrue(kg.getPrivateKey().length() > 0);
+        assertNotNull(kg.getPrivateKey());
     }
 
     @Test
     public void publicKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
-        String publicKey1 = kg.getPublicKey();
+        RSAKey publicKey1 = kg.getPublicKey();
 
         kg.generateKeys();
-        String publicKey2 = kg.getPublicKey();
+        RSAKey publicKey2 = kg.getPublicKey();
 
         assertNotEquals(publicKey1, publicKey2);
     }
@@ -49,10 +47,10 @@ public class KeyGeneratorTest {
     @Test
     public void privateKeysDoNotMatchIfGeneratedAgain() throws IOException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         kg.generateKeys();
-        String privateKey1 = kg.getPrivateKey();
+        RSAKey privateKey1 = kg.getPrivateKey();
 
         kg.generateKeys();
-        String privateKey2 = kg.getPrivateKey();
+        RSAKey privateKey2 = kg.getPrivateKey();
 
         assertNotEquals(privateKey1, privateKey2);
     }

@@ -4,13 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import rsatoolapp.domain.EncryptDecrypt;
 import rsatoolapp.domain.KeyGenerator;
+import rsatoolapp.domain.RSAKey;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import java.io.IOException;
-import java.security.*;
-import java.security.spec.InvalidKeySpecException;
+import java.math.BigInteger;
 
 import static org.junit.Assert.*;
 
@@ -19,41 +15,53 @@ public class EncryptDecryptTest {
     EncryptDecrypt ed;
 
     @Before
-    public void setUp() throws NoSuchAlgorithmException {
+    public void setUp() {
         kg = new KeyGenerator();
         ed = new EncryptDecrypt();
     }
 
     @Test
-    public void messageIsEncrypted() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
-            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void messageIsEncrypted() {
         kg.generateKeys();
+
         String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey(), true);
-        String encryptedMessage = ed.getEncryptedMessage();
-        assertNotEquals(msg, encryptedMessage);
+        RSAKey pubKey = kg.getPublicKey();
+
+        ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
+
+        BigInteger encryptedMessage = ed.getEncryptedMessage();
+
+        assertNotEquals(msg, encryptedMessage.toString());
     }
 
     @Test
-    public void messageIsDecrypted() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
-            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void messageIsDecrypted() {
         kg.generateKeys();
+
         String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey(), true);
-        ed.decrypt(ed.getEncryptedMessage(), kg.getPrivateKey(), false);
+        RSAKey pubKey = kg.getPublicKey();
+        RSAKey pvtKey = kg.getPrivateKey();
+
+        ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
+        ed.decrypt(pubKey.getModulus(), pvtKey.getExponent(), ed.getEncryptedMessage());
+
         String decryptedMessage = ed.getDecryptedMessage();
+
         assertEquals(msg, decryptedMessage);
     }
 
     @Test
-    public void encryptedMessagesDoNotEqualIfEncryptedAgain() throws IOException, InvalidKeySpecException, NoSuchPaddingException,
-            IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void encryptedMessagesDoNotEqualIfEncryptedAgain() {
         kg.generateKeys();
-        String msg = "Secret";
-        ed.encrypt(msg, kg.getPublicKey(), true);
 
-        String encryptedMessage1 = ed.getEncryptedMessage();
-        String encryptedMessage2 = ed.getEncryptedMessage();
+        String msg = "Secret";
+        RSAKey pubKey = kg.getPublicKey();
+
+        ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
+        BigInteger encryptedMessage1 = ed.getEncryptedMessage();
+
+        ed.encrypt(pubKey.getModulus(), pubKey.getExponent(), msg);
+        BigInteger encryptedMessage2 = ed.getEncryptedMessage();
 
         assertEquals(encryptedMessage1, encryptedMessage2);
     }
