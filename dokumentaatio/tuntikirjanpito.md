@@ -26,4 +26,13 @@
 | 25.9. | 2    | Koodin refaktorointia ja testikattavuuden laajentamista |
 | Yhteensä | 8    |
 
-### Aikaa käytetty yhteensä: 24 tuntia
+
+### Viikko 4
+| pvm | aika (h) | mitä tein  |
+| :----:|:-----| :-----|
+| 30.9. | 2    | Koodin refaktorointia ja salauksen mahdollistaminen halutulla avaimella (julkinen/yksityinen) |
+| 1.10. | 4    | Koodin refaktorointia ja ensimmäinen versio RSA-avaimien luonnista ja viestien salaamisesta/purkamisesta omia tietorakenteita käyttäen |
+| 2.10. | 5    | Implementoitiin aiemmin luotu erillinen luokka RSA-avaimien luomiseen sekä viestien salaamiseen/purkamiseen osaksi ohjelmaa. Uudet testit luotu ja vanhat korjattu. Javadoc lisättiin uusille luokille |
+| Yhteensä | 11    |
+
+### Aikaa käytetty yhteensä: 35 tuntia
