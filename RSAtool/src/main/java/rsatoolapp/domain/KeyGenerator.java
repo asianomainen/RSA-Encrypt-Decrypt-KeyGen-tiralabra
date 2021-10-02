@@ -1,116 +1,68 @@
 package rsatoolapp.domain;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.*;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
+import java.math.BigInteger;
+import java.util.Random;
 
 /**
  * Class for creating a new RSA key pair.
  */
 
 public class KeyGenerator {
-    KeyPairGenerator kpg;
-    Base64.Encoder encoder;
-    PrivateKey pvtKey;
-    PublicKey pubKey;
-    KeyFactory kf;
-
-    /**
-     * Initializes the RSA key generator.
-     */
-
-    public KeyGenerator() throws NoSuchAlgorithmException {
-        kpg = KeyPairGenerator.getInstance("RSA");
-        kpg.initialize(2048);
-        kf = KeyFactory.getInstance("RSA");
-        encoder = Base64.getEncoder();
-    }
+    RSAKey pubKey;
+    RSAKey pvtKey;
 
     /**
      * Generates a new RSA key pair.
      */
 
-    public void generateKeys() throws InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, IOException {
-        // Generate the key pair
-        KeyPair kp = kpg.generateKeyPair();
-        Key pb = kp.getPublic();
-        Key pt = kp.getPrivate();
+    public void generateKeys() {
+        Random rnd1 = new Random(System.currentTimeMillis());
+        Random rnd2 = new Random(System.currentTimeMillis() * 10);
 
-        // Write the encoded private key in to a file
-        FileOutputStream out = new FileOutputStream("rsa.key");
-        out.write(pt.getEncoded());
-        out.close();
+        // valitaan kaksi suurta alkulukua p ja q niin, että p ≠ q
+        // probablePrime metodin tuottama luku ei ole alkuluku
+        // alle 2^(-100) todennäköisyydellä, eli 1 / 1 267 650 600 228 229 401 496 703 205 376
+        // (1 suhde 1,27 kvintiljoonaan)
+        BigInteger p = BigInteger.probablePrime(2048, rnd1);
+        BigInteger q = BigInteger.probablePrime(2048, rnd2);
 
-        // Write the encoded public key in to a file
-        out = new FileOutputStream("rsa.pub");
-        out.write(pb.getEncoded());
-        out.close();
+        // lasketaan modulus eli n = p * q
+        BigInteger n = p.multiply(q);
 
-        // Read all bytes from the private key file
-        Path path = Paths.get("rsa.key");
-        byte[] bytes = Files.readAllBytes(path);
+        // määritellään ϕ(n)
+        BigInteger pMinus1 = p.subtract(new BigInteger("1"));
+        BigInteger qMinus1 = q.subtract(new BigInteger("1"));
+        BigInteger phiN = pMinus1.multiply(qMinus1);
 
-        // Generate private key
-        PKCS8EncodedKeySpec ksPrivate = new PKCS8EncodedKeySpec(bytes);
-        pvtKey = kf.generatePrivate(ksPrivate);
+        // määritellään julkisen avaimen eksponentiksi e
+        BigInteger e = new BigInteger("65537");
 
-        // Read all the public key bytes
-        path = Paths.get("rsa.pub");
-        bytes = Files.readAllBytes(path);
+        // kasvatetaan e:n arvoa niin pitkään, että gcd(e, ϕ(n)) = 1
+        // gcd = greatest common divisor = suurin yhteinen tekijä
+        while (!phiN.gcd(e).equals(BigInteger.ONE)) {
+            e = e.add(BigInteger.ONE);
+        }
 
-        // Generate public key
-        X509EncodedKeySpec ksPublic = new X509EncodedKeySpec(bytes);
-        pubKey = kf.generatePublic(ksPublic);
+        // määritellään yksityisen avaimen eksponentiksi d
+        BigInteger d = e.modInverse(phiN);
 
-/*      // Write the private key in Base64 to a file
-        Writer writer = new FileWriter("private.key");
-        writer.write("-----BEGIN RSA PRIVATE KEY-----\n"
-                + encoder.encodeToString(pvtKey.getEncoded())
-                + "\n-----END RSA PRIVATE KEY-----\n");
-        writer.close();
-
-        // Write the public key in Base64 to a file
-        writer = new FileWriter("public.pub");
-        writer.write("-----BEGIN RSA PUBLIC KEY-----\n"
-                + encoder.encodeToString(pubKey.getEncoded())
-                + "\n-----END RSA PUBLIC KEY-----\n");
-        writer.close();*/
+        pubKey = new RSAKey(n, e);
+        pvtKey = new RSAKey(n, d);
     }
 
     /**
-     * @return the public key in a readable (Base64) form
+     * @return the public key  as a RSAKey object
      */
 
-    public String getPublicKey() {
-        return encoder.encodeToString(pubKey.getEncoded());
+    public RSAKey getPublicKey() {
+        return pubKey;
     }
-
-/*    public String getPublicKey() {
-        return "-----BEGIN RSA PUBLIC KEY-----\n"
-                + encoder.encodeToString(pubKey.getEncoded())
-                + "\n-----END RSA PUBLIC KEY-----\n";
-    }*/
 
     /**
-     * @return the private key in a readable (Base64) form
+     * @return the private key  as a RSAKey object
      */
 
-    public String getPrivateKey() {
-        return encoder.encodeToString(pvtKey.getEncoded());
+    public RSAKey getPrivateKey() {
+        return pvtKey;
     }
-
-/*    public String getPrivateKey() {
-        return "-----BEGIN RSA PRIVATE KEY-----\n"
-                + encoder.encodeToString(pvtKey.getEncoded())
-                + "\n-----END RSA PRIVATE KEY-----\n";
-    }*/
 }
