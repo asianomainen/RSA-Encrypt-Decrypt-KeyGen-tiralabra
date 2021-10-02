@@ -51,7 +51,8 @@ public class KeyGenerator {
     }
 
     /**
-     * @return the public key  as a RSAKey object
+     * Returns the public key.
+     * @return      the public key as an RSAKey object
      */
 
     public RSAKey getPublicKey() {
@@ -59,7 +60,8 @@ public class KeyGenerator {
     }
 
     /**
-     * @return the private key  as a RSAKey object
+     * Returns the private key.
+     * @return      the private key as an RSAKey object
      */
 
     public RSAKey getPrivateKey() {

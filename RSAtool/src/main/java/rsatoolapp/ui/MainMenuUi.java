@@ -8,6 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Creates the main menu UI.
+ */
+
 public class MainMenuUi {
     public VBox vbMain;
     public HBox hbEncryptDecrypt;
@@ -183,6 +187,12 @@ public class MainMenuUi {
         hbEncryptDecrypt.getChildren().addAll(vbGenerate, vSeparator1, vbEncrypt, vSeparator2, vbDecrypt);
         vbMain.getChildren().addAll(hbEncryptDecrypt, btnQuit);
     }
+
+    /**
+     * Creates new a new Scene from the UI.
+     *
+     * @return      a new scene from the UI
+     */
 
     public Scene getScene() {
         return new Scene(vbMain);

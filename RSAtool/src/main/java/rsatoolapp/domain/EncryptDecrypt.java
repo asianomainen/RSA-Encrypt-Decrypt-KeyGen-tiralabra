@@ -12,6 +12,9 @@ public class EncryptDecrypt {
 
     /**
      * Encrypts a message.
+     * @param   n   the modulus
+     * @param   e   the public exponent
+     * @param   msg the message
      */
 
     public void encrypt(BigInteger n, BigInteger e, String msg) {
@@ -21,6 +24,9 @@ public class EncryptDecrypt {
 
     /**
      * Decrypts a message.
+     * @param   n   the modulus
+     * @param   d   the private exponent
+     * @param   msg the message
      */
 
     public void decrypt(BigInteger n, BigInteger d, BigInteger msg) {
@@ -29,8 +35,8 @@ public class EncryptDecrypt {
     }
 
     /**
-     * Returns the message in an encrypted Base64 form
-     * @return the encrypted message
+     * Returns the encrypted message as a BigInteger.
+     * @return      the encrypted message
      */
 
     public BigInteger getEncryptedMessage() {
@@ -38,8 +44,8 @@ public class EncryptDecrypt {
     }
 
     /**
-     * Returns the message in a decrypted Base64 form
-     * @return the decrypted message
+     * Returns the decrypted message as a String.
+     * @return      the decrypted message
      */
 
     public String getDecryptedMessage() {

@@ -8,6 +8,9 @@ import rsatoolapp.domain.KeyGenerator;
 
 import java.math.BigInteger;
 
+/**
+ * Class for creating the UI.
+ */
 
 public class RSAtoolUi extends Application {
     private final static int WIDTH = 1440;
