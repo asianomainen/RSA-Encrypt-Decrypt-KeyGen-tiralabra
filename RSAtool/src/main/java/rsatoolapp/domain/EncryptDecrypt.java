@@ -1,7 +1,6 @@
 package rsatoolapp.domain;
 
 import java.math.BigInteger;
-import java.util.Base64;
 
 /**
  * Class for encrypting/decrypting a message.
