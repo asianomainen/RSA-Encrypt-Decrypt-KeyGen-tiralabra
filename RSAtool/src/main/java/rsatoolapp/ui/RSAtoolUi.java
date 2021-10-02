@@ -6,71 +6,41 @@ import javafx.stage.Stage;
 import rsatoolapp.domain.EncryptDecrypt;
 import rsatoolapp.domain.KeyGenerator;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
+import java.math.BigInteger;
+
 
 public class RSAtoolUi extends Application {
-    private final static int WIDTH = 960;
+    private final static int WIDTH = 1440;
     private final static int HEIGHT = 960;
 
     @Override
-    public void start(Stage stage) throws NoSuchAlgorithmException {
+    public void start(Stage stage) {
         MainMenuUi mainMenuUi = new MainMenuUi(WIDTH, HEIGHT);
         Scene mainMenuScene = mainMenuUi.getScene();
-        KeyGeneratorUi keyGenUi = new KeyGeneratorUi(WIDTH, HEIGHT);
-        Scene keyGenScene = keyGenUi.getScene();
-        KeyGenerator kg = new KeyGenerator();
-        EncryptDecryptUi encryptDecryptUi = new EncryptDecryptUi(WIDTH, HEIGHT);
-        Scene encryptDecryptScene = encryptDecryptUi.getScene();
+        KeyGenerator keyGen = new KeyGenerator();
         EncryptDecrypt encDec = new EncryptDecrypt();
 
         stage.setScene(mainMenuScene);
         stage.setTitle("RSA Tool");
         stage.show();
 
-        mainMenuUi.btnGenerator.setOnAction(event -> stage.setScene(keyGenScene));
-        mainMenuUi.btnEncryptDecrypt.setOnAction(event -> stage.setScene(encryptDecryptScene));
-        keyGenUi.btnBackToMainMenu.setOnAction(event -> stage.setScene(mainMenuScene));
-        encryptDecryptUi.btnBackToMainMenu.setOnAction(event -> stage.setScene(mainMenuScene));
-        mainMenuUi.btnExit.setOnAction(event -> stage.close());
+        mainMenuUi.btnQuit.setOnAction(event -> stage.close());
 
-        keyGenUi.btnGenerate.setOnAction(event -> {
-            try {
-                kg.generateKeys();
-            } catch (IOException | InvalidKeySpecException | NoSuchPaddingException |
-                    InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
-                e.printStackTrace();
-            }
-            keyGenUi.publicKeyArea.setText(kg.getPublicKey());
-            keyGenUi.privateKeyArea.setText(kg.getPrivateKey());
+        mainMenuUi.btnGenerate.setOnAction(event -> {
+            keyGen.generateKeys();
+            mainMenuUi.commonModulusArea.setText(keyGen.getPublicKey().getModulus().toString());
+            mainMenuUi.publicExponentArea.setText(keyGen.getPublicKey().getExponent().toString());
+            mainMenuUi.privateExponentArea.setText(keyGen.getPrivateKey().getExponent().toString());
         });
 
-        encryptDecryptUi.encryptBtn.setOnAction(event -> {
-            try {
-                encDec.encrypt(encryptDecryptUi.encryptTextArea.getText(), encryptDecryptUi.encryptKeyArea.getText(), encryptDecryptUi.encryptPublicKeyButton.isSelected());
-                encryptDecryptUi.encryptedTextArea.setText(encDec.getEncryptedMessage());
-            } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
-                    IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
-                e.printStackTrace();
-            }
+        mainMenuUi.btnEncrypt.setOnAction(event -> {
+            encDec.encrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.publicExponentArea.getText()), mainMenuUi.encryptTextArea.getText());
+            mainMenuUi.encryptedTextArea.setText(encDec.getEncryptedMessage().toString());
         });
 
-        encryptDecryptUi.decryptBtn.setOnAction(event -> {
-            try {
-                encDec.decrypt(encryptDecryptUi.decryptTextArea.getText(), encryptDecryptUi.decryptKeyArea.getText(), encryptDecryptUi.decryptPublicKeyButton.isSelected());
-                encryptDecryptUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
-            } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException |
-                    IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException |
-                    InvalidKeySpecException e) {
-
-                e.printStackTrace();
-            }
+        mainMenuUi.btnDecrypt.setOnAction(event -> {
+            encDec.decrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.privateExponentArea.getText()), new BigInteger(mainMenuUi.decryptTextArea.getText()));
+            mainMenuUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
         });
     }
 

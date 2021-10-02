@@ -30,16 +30,6 @@ public class MainMenuUi {
     public Label decryptTextLabel;
     public TextArea encryptTextArea;
     public TextArea decryptTextArea;
-    public ToggleGroup encryptRadioButtonGroup;
-    public RadioButton encryptPublicKeyButton;
-    public RadioButton encryptPrivateKeyButton;
-    public ToggleGroup decryptRadioButtonGroup;
-    public RadioButton decryptPublicKeyButton;
-    public RadioButton decryptPrivateKeyButton;
-    public Label encryptKeyLabel;
-    public Label decryptKeyLabel;
-    public TextArea encryptKeyArea;
-    public TextArea decryptKeyArea;
     public Label clickToEncryptLabel;
     public Label clickToDecryptLabel;
     public Button btnGenerate;
@@ -149,38 +139,6 @@ public class MainMenuUi {
         decryptTextArea.setWrapText(true);
         decryptTextArea.setPrefSize(width - 50, 2000);
 
-        encryptRadioButtonGroup = new ToggleGroup();
-        encryptPublicKeyButton = new RadioButton("Public key");
-        encryptPublicKeyButton.setToggleGroup(encryptRadioButtonGroup);
-        encryptPublicKeyButton.setSelected(true);
-        encryptPrivateKeyButton = new RadioButton("Private key");
-        encryptPrivateKeyButton.setToggleGroup(encryptRadioButtonGroup);
-
-        decryptRadioButtonGroup = new ToggleGroup();
-        decryptPublicKeyButton = new RadioButton("Public key");
-        decryptPublicKeyButton.setToggleGroup(decryptRadioButtonGroup);
-        decryptPrivateKeyButton = new RadioButton("Private key");
-        decryptPrivateKeyButton.setSelected(true);
-        decryptPrivateKeyButton.setToggleGroup(decryptRadioButtonGroup);
-
-        encryptKeyLabel = new Label("Enter RSA key:");
-        encryptKeyLabel.setStyle("-fx-font-size:20");
-        encryptKeyLabel.setPadding(new Insets(30, 10, 0, 10));
-
-        decryptKeyLabel = new Label("Enter RSA key:");
-        decryptKeyLabel.setStyle("-fx-font-size:20");
-        decryptKeyLabel.setPadding(new Insets(30, 10, 0, 10));
-
-        encryptKeyArea = new TextArea("");
-        encryptKeyArea.setPromptText("Enter RSA key");
-        encryptKeyArea.setWrapText(true);
-        encryptKeyArea.setPrefSize(width - 50, 2000);
-
-        decryptKeyArea = new TextArea("");
-        decryptKeyArea.setPromptText("Enter RSA key");
-        decryptKeyArea.setWrapText(true);
-        decryptKeyArea.setPrefSize(width - 50, 2000);
-
         clickToEncryptLabel = new Label("Click to encrypt:");
         clickToEncryptLabel.setStyle("-fx-font-size:20");
         clickToEncryptLabel.setPadding(new Insets(30, 10, 5, 10));
@@ -219,13 +177,9 @@ public class MainMenuUi {
         btnQuit = new Button("Quit");
         btnQuit.setStyle("-fx-font-size:30");
 
-        hbEncryptRadio.getChildren().addAll(encryptPublicKeyButton, encryptPrivateKeyButton);
-        hbDecryptRadio.getChildren().addAll(decryptPublicKeyButton, decryptPrivateKeyButton);
         vbGenerate.getChildren().addAll(generateLabel, clickToGenerateLabel, btnGenerate, commonModulusLabel, commonModulusArea, publicExponentLabel, publicExponentArea, privateExponentLabel, privateExponentArea);
-        vbEncrypt.getChildren().addAll(encryptLabel, encryptTextLabel, encryptTextArea, encryptKeyLabel, hbEncryptRadio,
-                encryptKeyArea, clickToEncryptLabel, btnEncrypt, encryptedTextLabel, encryptedTextArea);
-        vbDecrypt.getChildren().addAll(decryptLabel, decryptTextLabel, decryptTextArea, decryptKeyLabel, hbDecryptRadio,
-                decryptKeyArea, clickToDecryptLabel, btnDecrypt, decryptedTextLabel, decryptedTextArea);
+        vbEncrypt.getChildren().addAll(encryptLabel, encryptTextLabel, encryptTextArea, clickToEncryptLabel, btnEncrypt, encryptedTextLabel, encryptedTextArea);
+        vbDecrypt.getChildren().addAll(decryptLabel, decryptTextLabel, decryptTextArea, clickToDecryptLabel, btnDecrypt, decryptedTextLabel, decryptedTextArea);
         hbEncryptDecrypt.getChildren().addAll(vbGenerate, vSeparator1, vbEncrypt, vSeparator2, vbDecrypt);
         vbMain.getChildren().addAll(hbEncryptDecrypt, btnQuit);
     }
