@@ -15,8 +15,14 @@ Ottaen huomioon AKS-alkulukutestin suuremman aikavaativuuden ja probablePrime-me
 Yllä kuvatun probablePrime-metodin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan myös [laajennettua Eukleideen algoritmia](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm),
 jonka aikavaativuus on O(nm).
 
+## Suorituskykytestaus
+Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **0,61s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
+
+Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **3,64s** (keskiarvo kymmenen suorituskerran jälkeen).
+
 ## Lähteet
 [probablePrime-metodi](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html#probablePrime(int,%20java.util.Random))  
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
 [Lucasin ja Lehmerin alkulukutesti](https://fi.wikipedia.org/wiki/Lucasin_ja_Lehmerin_alkulukutesti)  
-[AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)
+[AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)  
+[RSA-avaimien pituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths)
