@@ -10,15 +10,6 @@ import java.util.Base64;
 public class EncryptDecrypt {
     BigInteger encryptedMessage;
     String decryptedMessage;
-    Base64.Decoder decoder;
-
-    /**
-     * Initializes the encrypt/decrypt.
-     */
-
-    public EncryptDecrypt() {
-        decoder = Base64.getDecoder();
-    }
 
     /**
      * Encrypts a message.
