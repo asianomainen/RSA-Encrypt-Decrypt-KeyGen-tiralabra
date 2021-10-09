@@ -4,25 +4,19 @@ RSA-algoritmille on eri toteutustapoja ja tässä ohjelmassa niistä on toteutet
 ## Aikavaativuudet ja käytetyt tietorakenteet
 Tärkein tietorakenne tässä ohjelmassa RSA-salauksen kannalta on Javan BigInteger. 
 
-RSA-avaimien luomisessa tarvitaan kaksi erittäin suurta alkulukua p ja q, niin että p ≠ q. BigInteger-luokalla on valmis väline tähän: 
-[probablePrime](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html#probablePrime(int,%20java.util.Random)), 
-jota ohjelmassa käytetään. ProbablePrime-metodi on käytännössä yhdistelmä sarjasta [Miller-Rabinin testejä](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test), 
-jonka aikavaativuus on O(k log(n)<sup>3</sup>), yhdistettynä [Lucasin ja Lehmerin alkulukutestiin](https://fi.wikipedia.org/wiki/Lucasin_ja_Lehmerin_alkulukutesti), 
-jonka aikavaativuus puolestaan on O(log(n)<sup>3</sup>). Tämä toteutus on todennäköisyyksiin perustuva: tuloksena saatu luku **ei ole** alkuluku alle 2^(-100) todennäköisyydellä (1 suhde 1,27 kvintiljoonaan).
+RSA-avaimien luomisessa tarvitaan kaksi erittäin suurta alkulukua p ja q, niin että p ≠ q. Ohjelmassa on luotu nämä numerot generoimalla satunnaisia hyvin suuria BigInteger-tyyppisiä lukuja, joille sen jälkeen suoritetaan 40 [Miller-Rabinin testiä](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test), 
+jonka aikavaativuus on O(k log(n)<sup>3</sup>). Tämä toteutus on todennäköisyyksiin perustuva: tuloksena saatu luku **ei ole** alkuluku alle 1/4<sup>40</sup> todennäköisyydellä.
 On myös tapa varmasti alkuluku käyttämällä [AKS-alkulukutestiä](https://en.wikipedia.org/wiki/AKS_primality_test), mutta sen aikavaativuus on Õ(log(n)<sup>6</sup>), eli <br> O(log(n log<sup>k</sup> n)<sup>6</sup>).
-Ottaen huomioon AKS-alkulukutestin suuremman aikavaativuuden ja probablePrime-metodin todennäköisyyden, tässä ohjelmassa on päätetty käyttää probablePrime-metodia.
+Ottaen huomioon AKS-alkulukutestin suuremman aikavaativuuden ja Miller-Rabinin testin todennäköisyyden, tässä ohjelmassa on päätetty käyttää Miller-Rabinin testiä.
 
-Yllä kuvatun probablePrime-metodin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan myös [laajennettua Eukleideen algoritmia](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm),
-jonka aikavaativuus on O(nm).
+Miller-Rabinin testin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan myös [laajennettua Eukleideen algoritmia](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm), jonka aikavaativuus on O(nm).
 
 ## Suorituskykytestaus
-Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **0,61s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
+Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **3,79s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
 
-Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **3,64s** (keskiarvo kymmenen suorituskerran jälkeen).
+Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **38,56s** (keskiarvo kymmenen suorituskerran jälkeen).
 
 ## Lähteet
-[probablePrime-metodi](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html#probablePrime(int,%20java.util.Random))  
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
-[Lucasin ja Lehmerin alkulukutesti](https://fi.wikipedia.org/wiki/Lucasin_ja_Lehmerin_alkulukutesti)  
 [AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)  
 [RSA-avaimien pituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths)
