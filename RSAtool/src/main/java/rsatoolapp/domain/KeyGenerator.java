@@ -16,8 +16,6 @@ public class KeyGenerator {
      */
 
     public void generateKeys() {
-        // long start = System.nanoTime();
-
         // valitaan kaksi suurta alkulukua p ja q niin, että p ≠ q
         // isPrime metodin tuottama luku ei ole alkuluku
         // 1/4^40 todennäköisyydellä, eli 1 / 1 208 925 819 614 629 174 706 176
@@ -51,6 +49,9 @@ public class KeyGenerator {
 
         // määritellään yksityisen avaimen eksponentiksi d
         BigInteger d = e.modInverse(phiN);
+
+        pubKey = new RSAKey(n, e);
+        pvtKey = new RSAKey(n, d);
     }
 
     /**
@@ -74,7 +75,7 @@ public class KeyGenerator {
     }
 
     /**
-     * Performs a Miller-Rabin primality test
+     * Performs a Miller-Rabin primality test.
      *
      * @param n BigInteger to be tested
      * @param random SecureRandom number generator
