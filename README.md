@@ -4,16 +4,14 @@ RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytett
 
 ## Dokumentaatio
 [Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)  
-[Toteutusdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)
+[Toteutusdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)  
+[Testausdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/testausdokumentti.md)
 
 ### Viikkoraportit
-[Viikko 1](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk1.md)
-
-[Viikko 2](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk2.md)
-
-[Viikko 3](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk3.md)
-
-[Viikko 4](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk4.md)
+[Viikko 1](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk1.md)  
+[Viikko 2](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk2.md)  
+[Viikko 3](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk3.md)  
+[Viikko 4](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk4.md)  
 
 ## Javan versio
 
