@@ -12,6 +12,7 @@ RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytett
 [Viikko 2](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk2.md)  
 [Viikko 3](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk3.md)  
 [Viikko 4](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk4.md)  
+[Viikko 5](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk5.md)  
 
 ## Javan versio
 
