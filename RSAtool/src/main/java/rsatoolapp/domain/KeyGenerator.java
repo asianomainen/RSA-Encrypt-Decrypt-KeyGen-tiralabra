@@ -1,7 +1,7 @@
 package rsatoolapp.domain;
 
 import java.math.BigInteger;
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * Class for creating a new RSA key pair.
@@ -16,15 +16,21 @@ public class KeyGenerator {
      */
 
     public void generateKeys() {
-        Random rnd1 = new Random(System.currentTimeMillis());
-        Random rnd2 = new Random(System.currentTimeMillis() * 10);
+        // long start = System.nanoTime();
 
         // valitaan kaksi suurta alkulukua p ja q niin, että p ≠ q
-        // probablePrime metodin tuottama luku ei ole alkuluku
-        // alle 2^(-100) todennäköisyydellä, eli 1 / 1 267 650 600 228 229 401 496 703 205 376
-        // (1 suhde 1,27 kvintiljoonaan)
-        BigInteger p = BigInteger.probablePrime(2048, rnd1);
-        BigInteger q = BigInteger.probablePrime(2048, rnd2);
+        // isPrime metodin tuottama luku ei ole alkuluku
+        // 1/4^40 todennäköisyydellä, eli 1 / 1 208 925 819 614 629 174 706 176
+
+        BigInteger p;
+        do {
+            p = new BigInteger(2048, new SecureRandom());
+        } while (!isPrime(p));
+
+        BigInteger q;
+        do {
+            q = new BigInteger(2048, new SecureRandom());
+        } while (!isPrime(q));
 
         // lasketaan modulus eli n = p * q
         BigInteger n = p.multiply(q);
@@ -45,14 +51,80 @@ public class KeyGenerator {
 
         // määritellään yksityisen avaimen eksponentiksi d
         BigInteger d = e.modInverse(phiN);
+    }
 
-        pubKey = new RSAKey(n, e);
-        pvtKey = new RSAKey(n, d);
+    /**
+     * Check if the given BigInteger is a prime number
+     * with a probability of 1/4^40.
+     *
+     * @param n BigInteger to be tested
+     * @return true if number is a prime, false if not
+     */
+
+    public boolean isPrime(BigInteger n) {
+        SecureRandom random = new SecureRandom();
+
+        // Suoritetaan Miller-Rabinin testi 40 kertaa
+        for (int i = 0; i < 40; i++)
+            if (!millerRabin(n, random)) {
+                return false;
+            }
+
+        return true;
+    }
+
+    /**
+     * Performs a Miller-Rabin primality test
+     *
+     * @param n BigInteger to be tested
+     * @param random SecureRandom number generator
+     * @return true if number is a prime, false if not
+     */
+
+    public boolean millerRabin(BigInteger n, SecureRandom random) {
+        // Varmistaa, että 1 < temp < n
+        BigInteger temp;
+        do {
+            temp = new BigInteger(n.bitLength() - 1, random);
+        } while (temp.compareTo(BigInteger.ONE) <= 0);
+
+        // n ei ole alkuluku mikäli sillä on yhteinen tekijä temp-luvun kanssa
+        if (!n.gcd(temp).equals(BigInteger.ONE)) {
+            return false;
+        }
+
+        BigInteger a = n.subtract(BigInteger.ONE);
+
+        // Selvittää suurimman kahden potenssin k, joka jakautuu tasaisesti n-1:een
+        int k = 0;
+        while ((a.mod(BigInteger.TWO)).equals(BigInteger.ZERO)) {
+            a = a.divide(BigInteger.TWO);
+            k++;
+        }
+
+        BigInteger r = temp.modPow(a, n);
+
+        // Mikäli r = 1, niin n on todennäköisesti alkuluku
+        if (r.equals(BigInteger.ONE))
+            return true;
+
+        // Muuten katsotaan tuleeko luvusta koskaan -1, kun sitä
+        // korotetaan toistuvasti toiseen potenssiin
+        for (int i = 0; i < k; i++) {
+            if (r.equals(n.subtract(BigInteger.ONE))) {
+                return true;
+            } else {
+                r = r.modPow(BigInteger.TWO, n);
+            }
+        }
+
+        return false;
     }
 
     /**
      * Returns the public key.
-     * @return      the public key as an RSAKey object
+     *
+     * @return the public key as an RSAKey object
      */
 
     public RSAKey getPublicKey() {
@@ -61,7 +133,8 @@ public class KeyGenerator {
 
     /**
      * Returns the private key.
-     * @return      the private key as an RSAKey object
+     *
+     * @return the private key as an RSAKey object
      */
 
     public RSAKey getPrivateKey() {
