@@ -4,15 +4,15 @@
 
 ### Sovelluslogiikka
 
-Kaikki sovelluslogiikkaan liittyvän luokat testataan automaattisesti JUnit-testeillä. 
-
-JUnit testeillä suoritetaan toistaiseksi yksinkertaisia sovelluslogiikkaal liittyviä testejä.
+Kaikki sovelluslogiikkaan liittyvän luokat testataan automaattisesti JUnit-testeillä. Alla olevissa kuvissa näkyvät testipuutokset ovat ääritapauksia, joihin päädytään ohjelmassa hyvin harvoin ja tästä syystä niitä ei käydä läpi.
 
 ### Testauskattavuus
 
 Testeissä ei oteta huomioon käyttöliittymän rakentavaa ui-pakkausta.
+![domain](https://user-images.githubusercontent.com/46067482/136668850-0528742f-b35d-483f-ac86-d88ba4e0f865.png)
 
-![Screenshot from 2021-09-25 20-10-13](https://user-images.githubusercontent.com/46067482/134780545-5e54ecf5-4c3e-49a5-8e9b-f0292f22abea.png)
+![keygen](https://user-images.githubusercontent.com/46067482/136668852-bf882f38-568a-4cde-9a8d-b6550c0dc1ab.png)
+
 
 ### Järjestelmätestaus
 
