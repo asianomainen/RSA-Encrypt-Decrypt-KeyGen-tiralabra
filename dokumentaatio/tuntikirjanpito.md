@@ -35,4 +35,12 @@
 | 2.10. | 5    | Implementoitiin aiemmin luotu erillinen luokka RSA-avaimien luomiseen sekä viestien salaamiseen/purkamiseen osaksi ohjelmaa. Uudet testit luotu ja vanhat korjattu. Javadoc lisättiin uusille luokille |
 | Yhteensä | 11    |
 
-### Aikaa käytetty yhteensä: 35 tuntia
+### Viikko 5
+| pvm | aika (h) | mitä tein  |
+| :----:|:-----| :-----|
+| 06.10. | 2    | Miller-Rabinin testiin perehtymistä ja sen testaamista |
+| 07.10. | 3    | Ensimmäinen version Miller-Rabinin testistä valmis ja toiminnassa |
+| 2.10. | 3    | Miller-Rabinin testi implementoitiin ohjelmaan ja varmistettiin sen toimivuus. Suoritettiin tehokkuustestejä uudelle algoritmille ja kirjoitettiin sille javadoc ja kommentit. |
+| Yhteensä | 8    |
+
+### Aikaa käytetty yhteensä: 43 tuntia
