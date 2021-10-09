@@ -66,10 +66,11 @@ public class KeyGenerator {
         SecureRandom random = new SecureRandom();
 
         // Suoritetaan Miller-Rabinin testi 40 kertaa
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 40; i++) {
             if (!millerRabin(n, random)) {
                 return false;
             }
+        }
 
         return true;
     }
@@ -106,8 +107,9 @@ public class KeyGenerator {
         BigInteger r = temp.modPow(a, n);
 
         // Mikäli r = 1, niin n on todennäköisesti alkuluku
-        if (r.equals(BigInteger.ONE))
+        if (r.equals(BigInteger.ONE)) {
             return true;
+        }
 
         // Muuten katsotaan tuleeko luvusta koskaan -1, kun sitä
         // korotetaan toistuvasti toiseen potenssiin
