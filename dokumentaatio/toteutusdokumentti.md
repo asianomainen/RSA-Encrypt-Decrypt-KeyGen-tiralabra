@@ -19,6 +19,9 @@ Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen täll
 
 Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **38,56s** (keskiarvo kymmenen suorituskerran jälkeen).
 
+## Ohjelman mahdolliset kehityskohteet
+RSA-avaimien generoinnissa avaimet usein enkoodataan X509- (julkinen avain) tai PKCS8-muotoon (yksityinen avain), jotta niitä voi jakaa. Ohjelmassa enkoodausta ei ole suoritettu ja sen voisi toteuttaa.
+
 ## Lähteet
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
 [AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)  
