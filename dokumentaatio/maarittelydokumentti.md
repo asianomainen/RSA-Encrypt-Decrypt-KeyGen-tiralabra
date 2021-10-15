@@ -47,7 +47,7 @@ Käyttäjä voi lähettää tämän salatun viestin vastaanottajalle, joka puole
 
 - Miller-Rabinin algoritmi: 
   - Aikavaativuus: O(n<sup>2</sup>)
-  - Tilavaativuus: O(n)
+  - Tilavaativuus: O(1)
 
 ## Lähteet
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)
