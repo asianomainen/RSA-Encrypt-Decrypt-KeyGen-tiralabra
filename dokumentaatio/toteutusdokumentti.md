@@ -4,42 +4,42 @@ RSA-algoritmille on eri toteutustapoja ja tässä ohjelmassa niistä on toteutet
 ## Ohjelman yleisrakenne
 Ohjelma on toteutettu Java-kielellä olio-ohjelmointia käyttäen.  
 
-Ohjelman RSAToolUi-luokka alustaa MainMenuUi-luokan käyttöliittymän, jonka kautta käyttäjä hallinnoi ohjelman toimintoja.  
+Ohjelman RSAToolUi-luokka alustaa MainMenuUi-luokan käyttöliittymän, jonka kautta käyttäjä hallinnoi ohjelman toimintoja.
 
-Ohjelman sovelluslogiikka koostuu kolmesta luokasta: 
-   - KeyGenerator 
-     - Luokka RSA-avainparin luomiseen
-     - Metodit
-       - generateKeys
-         - Luo uudet RSA-avaimet 
-       - isPrime
-         - Tarkistaa onko annettu luku alkuluku
-       - millerRabin
-         - suorittaa Miller-Rabinin testin
-       - getPublicKey
-         - palauttaa julkisen avaimen
-       - getPrivateKey
-         - palauttaa yksityisen avaimen 
-   - RSAKey
-     - Luokka RSA-avaimen luomiseen
-     - Konstruktori
-       - RSAKey, joka saa muuttujana avaimen modulon ja eksponentin
-     - Metodit
-       - getModulus
-         - palauttaa avaimen modulon, eli jakojäännöksen
-       - getExponent
-         - palauttaa avaimen eksponentin
-   - EncryptDecrypt
-     - Luokka viestien salaamiseen ja salauksen purkamiseen
-     - Metodit
-       - encrypt, joka saa muuttujana modulon, julkisen avaimen eksponentin ja salattavan viestin
-         - salaa muuttujana annetun viestin
-       - decrypt, joka saa muuttujana modulon, yksityinsen avaimen eksponentin ja salatun viestin
-         - purkaa salatun viestin
-       - getEncryptedMessage
-         - palauttaa salatun viestin
-       - getDecryptedMessage
-         - palauttaa puretun viestin
+Ohjelman sovelluslogiikka koostuu kolmesta luokasta:
+   1. KeyGenerator 
+      - Luokka RSA-avainparin luomiseen
+      - Metodit
+        - generateKeys
+          - Luo uudet RSA-avaimet 
+        - isPrime
+          - Tarkistaa onko annettu luku alkuluku
+        - millerRabin
+          - suorittaa Miller-Rabinin testin
+        - getPublicKey
+          - palauttaa julkisen avaimen
+        - getPrivateKey
+          - palauttaa yksityisen avaimen 
+   2. RSAKey
+      - Luokka RSA-avaimen luomiseen
+      - Konstruktori
+        - RSAKey, joka saa muuttujana avaimen modulon ja eksponentin
+      - Metodit
+        - getModulus
+          - palauttaa avaimen modulon, eli jakojäännöksen
+        - getExponent
+          - palauttaa avaimen eksponentin
+   3. EncryptDecrypt
+      - Luokka viestien salaamiseen ja salauksen purkamiseen
+      - Metodit
+        - encrypt, joka saa muuttujana modulon, julkisen avaimen eksponentin ja salattavan viestin
+          - salaa muuttujana annetun viestin
+        - decrypt, joka saa muuttujana modulon, yksityinsen avaimen eksponentin ja salatun viestin
+          - purkaa salatun viestin
+        - getEncryptedMessage
+          - palauttaa salatun viestin
+        - getDecryptedMessage
+          - palauttaa puretun viestin
 
 ## Aikavaativuudet ja käytetyt tietorakenteet
 Tärkein tietorakenne tässä ohjelmassa RSA-salauksen kannalta on Javan BigInteger. 
@@ -60,7 +60,9 @@ Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen täll
 Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **38,56s** (keskiarvo kymmenen suorituskerran jälkeen).
 
 ## Ohjelman mahdolliset kehityskohteet
-RSA-avaimien generoinnissa avaimet usein enkoodataan X509- (julkinen avain) tai PKCS8-muotoon (yksityinen avain), jotta niitä voi jakaa. Ohjelmassa enkoodausta ei ole suoritettu ja sen voisi toteuttaa.
+RSA-avaimien generoinnissa avaimet usein enkoodataan X509- (julkinen avain) tai PKCS8-muotoon (yksityinen avain), jotta niitä voi jakaa. Ohjelmassa enkoodausta ei ole suoritettu ja sen voisi toteuttaa.  
+
+Ohjelmassa ei toistaiseksi pysty salata viestiä yksityisellä avaimella, jota voisi käyttää viestin lähettäjän tunnistamiseen. 
 
 ## Lähteet
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
