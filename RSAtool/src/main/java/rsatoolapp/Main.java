@@ -1,9 +1,9 @@
 package rsatoolapp;
 
-import rsatoolapp.ui.RSAtoolUi;
+import rsatoolapp.ui.RSAToolUi;
 
 public class Main {
     public static void main(String[] args) {
-        RSAtoolUi.main(args);
+        RSAToolUi.main(args);
     }
 }

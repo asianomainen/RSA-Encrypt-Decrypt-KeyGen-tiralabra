@@ -12,7 +12,7 @@ import java.math.BigInteger;
  * Luokka, joka aloittaa ohjelman ja hallinnoi käyttöliittymän painikkeita.
  */
 
-public class RSAtoolUi extends Application {
+public class RSAToolUi extends Application {
     private final static int WIDTH = 1440;
     private final static int HEIGHT = 960;
 
@@ -52,6 +52,6 @@ public class RSAtoolUi extends Application {
     }
 
     public static void main(String[] args) {
-        launch(RSAtoolUi.class);
+        launch(RSAToolUi.class);
     }
 }
