@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 /**
- * Class for creating a new RSA key pair.
+ * Luokka RSA-avainparin luomiseen.
  */
 
 public class KeyGenerator {
@@ -12,7 +12,7 @@ public class KeyGenerator {
     RSAKey pvtKey;
 
     /**
-     * Generates a new RSA key pair.
+     * Luo uuden RSA-avainparin.
      */
 
     public void generateKeys() {
@@ -55,11 +55,11 @@ public class KeyGenerator {
     }
 
     /**
-     * Check if the given BigInteger is a prime number
-     * with a probability of 1/4^40.
+     * Tarkistaa onko annettu BigInteger alkuluku
+     * 1/4^40 todennäköisyydellä.
      *
-     * @param n BigInteger to be tested
-     * @return true if number is a prime, false if not
+     * @param n tarkistettava BigInteger
+     * @return true jos luku on alkuluku, false jos ei ole
      */
 
     public boolean isPrime(BigInteger n) {
@@ -76,11 +76,11 @@ public class KeyGenerator {
     }
 
     /**
-     * Performs a Miller-Rabin primality test.
+     * Suorittaa Miller-Rabinin alkulukutestin.
      *
-     * @param n BigInteger to be tested
-     * @param random SecureRandom number generator
-     * @return true if number is a prime, false if not
+     * @param n      testattava BiInteger
+     * @param random SecureRandom satunnaisen luvun luomiseen
+     * @return true jos luku on alkuluku, false jos ei ole
      */
 
     public boolean millerRabin(BigInteger n, SecureRandom random) {
@@ -125,9 +125,9 @@ public class KeyGenerator {
     }
 
     /**
-     * Returns the public key.
+     * Palauttaa julkisen avaimen.
      *
-     * @return the public key as an RSAKey object
+     * @return julkinen avain RSAKey-oliona
      */
 
     public RSAKey getPublicKey() {
@@ -135,9 +135,9 @@ public class KeyGenerator {
     }
 
     /**
-     * Returns the private key.
+     * Palauttaa yksityisen avaimen.
      *
-     * @return the private key as an RSAKey object
+     * @return yksityinen avain RSAKey-oliona
      */
 
     public RSAKey getPrivateKey() {

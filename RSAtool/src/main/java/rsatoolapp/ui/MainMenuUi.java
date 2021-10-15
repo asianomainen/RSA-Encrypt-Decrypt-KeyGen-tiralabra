@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * Creates the main menu UI.
+ * Luokka, joka luo ohjelman käyttöliittymän.
  */
 
 public class MainMenuUi {
@@ -31,6 +31,7 @@ public class MainMenuUi {
     public Label encryptLabel;
     public Label decryptLabel;
     public Label encryptTextLabel;
+    public Button btnCopyText;
     public Label decryptTextLabel;
     public TextArea encryptTextArea;
     public TextArea decryptTextArea;
@@ -90,7 +91,7 @@ public class MainMenuUi {
         publicExponentArea = new TextArea("");
         publicExponentArea.setEditable(false);
         publicExponentArea.setWrapText(true);
-        publicExponentArea.setPrefSize(width - 50, 2000);
+        publicExponentArea.setPrefSize(width - 50, 100);
 
         privateExponentLabel = new Label("Private key exponent");
         privateExponentLabel.setStyle("-fx-font-size:20");
@@ -123,13 +124,15 @@ public class MainMenuUi {
 
         decryptLabel = new Label("Decrypt");
         decryptLabel.setStyle("-fx-font-size:40");
-        decryptLabel.setPadding(new Insets(10, 10, 10, 10));
+        decryptLabel.setPadding(new Insets(10, 10, 25, 10));
 
         encryptTextLabel = new Label("Enter text to encrypt:");
         encryptTextLabel.setStyle("-fx-font-size:20");
         encryptTextLabel.setPadding(new Insets(10, 10, 5, 10));
 
-        decryptTextLabel = new Label("Enter text to decrypt:");
+        btnCopyText = new Button("Click to copy encrypted text");
+
+        decryptTextLabel = new Label("or enter encrypted text:");
         decryptTextLabel.setStyle("-fx-font-size:20");
         decryptTextLabel.setPadding(new Insets(10, 10, 5, 10));
 
@@ -183,7 +186,7 @@ public class MainMenuUi {
 
         vbGenerate.getChildren().addAll(generateLabel, clickToGenerateLabel, btnGenerate, commonModulusLabel, commonModulusArea, publicExponentLabel, publicExponentArea, privateExponentLabel, privateExponentArea);
         vbEncrypt.getChildren().addAll(encryptLabel, encryptTextLabel, encryptTextArea, clickToEncryptLabel, btnEncrypt, encryptedTextLabel, encryptedTextArea);
-        vbDecrypt.getChildren().addAll(decryptLabel, decryptTextLabel, decryptTextArea, clickToDecryptLabel, btnDecrypt, decryptedTextLabel, decryptedTextArea);
+        vbDecrypt.getChildren().addAll(decryptLabel, btnCopyText, decryptTextLabel, decryptTextArea, clickToDecryptLabel, btnDecrypt, decryptedTextLabel, decryptedTextArea);
         hbEncryptDecrypt.getChildren().addAll(vbGenerate, vSeparator1, vbEncrypt, vSeparator2, vbDecrypt);
         vbMain.getChildren().addAll(hbEncryptDecrypt, btnQuit);
     }

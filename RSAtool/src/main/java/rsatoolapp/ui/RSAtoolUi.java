@@ -9,7 +9,7 @@ import rsatoolapp.domain.KeyGenerator;
 import java.math.BigInteger;
 
 /**
- * Class for creating the UI.
+ * Luokka, joka aloittaa ohjelman ja hallinnoi käyttöliittymän painikkeita.
  */
 
 public class RSAtoolUi extends Application {
@@ -39,6 +39,10 @@ public class RSAtoolUi extends Application {
         mainMenuUi.btnEncrypt.setOnAction(event -> {
             encDec.encrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.publicExponentArea.getText()), mainMenuUi.encryptTextArea.getText());
             mainMenuUi.encryptedTextArea.setText(encDec.getEncryptedMessage().toString());
+        });
+
+        mainMenuUi.btnCopyText.setOnAction(event -> {
+            mainMenuUi.decryptTextArea.setText(encDec.getEncryptedMessage().toString());
         });
 
         mainMenuUi.btnDecrypt.setOnAction(event -> {

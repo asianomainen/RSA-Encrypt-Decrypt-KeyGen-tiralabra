@@ -3,7 +3,7 @@ package rsatoolapp.domain;
 import java.math.BigInteger;
 
 /**
- * Class for encrypting/decrypting a message.
+ * Luokka viestin salaamiseen/purkamiseen.
  */
 
 public class EncryptDecrypt {
@@ -11,10 +11,11 @@ public class EncryptDecrypt {
     String decryptedMessage;
 
     /**
-     * Encrypts a message.
-     * @param   n   the modulus
-     * @param   e   the public exponent
-     * @param   msg the message
+     * Salaa viestin.
+     *
+     * @param n   modulo
+     * @param e   julkinen eksponentti
+     * @param msg salattava viesti
      */
 
     public void encrypt(BigInteger n, BigInteger e, String msg) {
@@ -23,20 +24,22 @@ public class EncryptDecrypt {
     }
 
     /**
-     * Decrypts a message.
-     * @param   n   the modulus
-     * @param   d   the private exponent
-     * @param   msg the message
+     * Purkaa viestin.
+     *
+     * @param n   modulo
+     * @param d   yksityinen eksponentti
+     * @param msg purettava viesti
      */
 
     public void decrypt(BigInteger n, BigInteger d, BigInteger msg) {
         BigInteger decrypted = msg.modPow(d, n);
-        decryptedMessage =  new String(decrypted.toByteArray());
+        decryptedMessage = new String(decrypted.toByteArray());
     }
 
     /**
-     * Returns the encrypted message as a BigInteger.
-     * @return      the encrypted message
+     * Palauttaa salatun viestin BigInteger-muodossa.
+     *
+     * @return salattu viesti
      */
 
     public BigInteger getEncryptedMessage() {
@@ -44,8 +47,9 @@ public class EncryptDecrypt {
     }
 
     /**
-     * Returns the decrypted message as a String.
-     * @return      the decrypted message
+     * Palauttaa puretun viestin String-muodossa.
+     *
+     * @return purettu viesti
      */
 
     public String getDecryptedMessage() {

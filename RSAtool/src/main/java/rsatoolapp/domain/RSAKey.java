@@ -3,7 +3,7 @@ package rsatoolapp.domain;
 import java.math.BigInteger;
 
 /**
- * Class for creating a new RSA key.
+ * Luokka uuden RSA-avaimen luomiseen.
  */
 
 public class RSAKey {
@@ -11,9 +11,10 @@ public class RSAKey {
     private final BigInteger exponent;
 
     /**
-     * Creates a new RSA key.
-     * @param modulus the modulus used in the key
-     * @param exponent the exponent used in the key
+     * Luo uuden RSA-avaimen,
+     *
+     * @param modulus  avaimessa käytetty modulo
+     * @param exponent avaimessa käytetty eksponentti
      */
 
     public RSAKey(BigInteger modulus, BigInteger exponent) {
@@ -22,8 +23,9 @@ public class RSAKey {
     }
 
     /**
-     * Returns the modulus of the key.
-     * @return      the modulus
+     * Palauttaa avaimen modulon.
+     *
+     * @return avaimen modulo
      */
 
     public BigInteger getModulus() {
@@ -31,8 +33,9 @@ public class RSAKey {
     }
 
     /**
-     * Returns the exponent of the key.
-     * @return      the exponent
+     * Palauttaa avaimen eksponentin.
+     *
+     * @return avaimen eksponentti
      */
 
     public BigInteger getExponent() {
