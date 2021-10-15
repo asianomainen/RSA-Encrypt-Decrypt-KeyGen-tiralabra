@@ -9,7 +9,7 @@ Ohjelman RSAToolUi-luokka alustaa MainMenuUi-luokan käyttöliittymän, jonka ka
 Ohjelman sovelluslogiikka koostuu kolmesta luokasta:
    1. KeyGenerator 
       - Luokka RSA-avainparin luomiseen
-      - Metodit
+      - Metodit:
         - generateKeys
           - Luo uudet RSA-avaimet 
         - isPrime
@@ -22,16 +22,16 @@ Ohjelman sovelluslogiikka koostuu kolmesta luokasta:
           - palauttaa yksityisen avaimen 
    2. RSAKey
       - Luokka RSA-avaimen luomiseen
-      - Konstruktori
+      - Konstruktori:
         - RSAKey, joka saa muuttujana avaimen modulon ja eksponentin
-      - Metodit
+      - Metodit:
         - getModulus
           - palauttaa avaimen modulon, eli jakojäännöksen
         - getExponent
           - palauttaa avaimen eksponentin
    3. EncryptDecrypt
       - Luokka viestien salaamiseen ja salauksen purkamiseen
-      - Metodit
+      - Metodit:
         - encrypt, joka saa muuttujana modulon, julkisen avaimen eksponentin ja salattavan viestin
           - salaa muuttujana annetun viestin
         - decrypt, joka saa muuttujana modulon, yksityinsen avaimen eksponentin ja salatun viestin
