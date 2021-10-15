@@ -1,6 +1,46 @@
 # Toteutusdokumentti
 RSA-algoritmille on eri toteutustapoja ja tässä ohjelmassa niistä on toteutettu yksi. Tästä lisää alla.
 
+## Ohjelman yleisrakenne
+Ohjelma on toteutettu Java-kielellä olio-ohjelmointia käyttäen.  
+
+Ohjelman RSAToolUi-luokka alustaa MainMenuUi-luokan käyttöliittymän, jonka kautta käyttäjä hallinnoi ohjelman toimintoja.  
+
+Ohjelman sovelluslogiikka koostuu kolmesta luokasta: 
+   - KeyGenerator 
+     - Luokka RSA-avainparin luomiseen
+     - Metodit
+       - generateKeys
+         - Luo uudet RSA-avaimet 
+       - isPrime
+         - Tarkistaa onko annettu luku alkuluku
+       - millerRabin
+         - suorittaa Miller-Rabinin testin
+       - getPublicKey
+         - palauttaa julkisen avaimen
+       - getPrivateKey
+         - palauttaa yksityisen avaimen 
+   - RSAKey
+     - Luokka RSA-avaimen luomiseen
+     - Konstruktori
+       - RSAKey, joka saa muuttujana avaimen modulon ja eksponentin
+     - Metodit
+       - getModulus
+         - palauttaa avaimen modulon, eli jakojäännöksen
+       - getExponent
+         - palauttaa avaimen eksponentin
+   - EncryptDecrypt
+     - Luokka viestien salaamiseen ja salauksen purkamiseen
+     - Metodit
+       - encrypt, joka saa muuttujana modulon, julkisen avaimen eksponentin ja salattavan viestin
+         - salaa muuttujana annetun viestin
+       - decrypt, joka saa muuttujana modulon, yksityinsen avaimen eksponentin ja salatun viestin
+         - purkaa salatun viestin
+       - getEncryptedMessage
+         - palauttaa salatun viestin
+       - getDecryptedMessage
+         - palauttaa puretun viestin
+
 ## Aikavaativuudet ja käytetyt tietorakenteet
 Tärkein tietorakenne tässä ohjelmassa RSA-salauksen kannalta on Javan BigInteger. 
 
