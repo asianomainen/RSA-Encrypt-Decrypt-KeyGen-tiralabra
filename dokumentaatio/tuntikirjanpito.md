@@ -40,7 +40,15 @@
 | :----:|:-----| :-----|
 | 06.10. | 2    | Miller-Rabinin testiin perehtymistä ja sen testaamista |
 | 07.10. | 3    | Ensimmäinen version Miller-Rabinin testistä valmis ja toiminnassa |
-| 2.10. | 3    | Miller-Rabinin testi implementoitiin ohjelmaan ja varmistettiin sen toimivuus. Suoritettiin tehokkuustestejä uudelle algoritmille ja kirjoitettiin sille javadoc ja kommentit. |
+| 09.10. | 3    | Miller-Rabinin testi implementoitiin ohjelmaan ja varmistettiin sen toimivuus. Suoritettiin tehokkuustestejä uudelle algoritmille ja kirjoitettiin sille javadoc ja kommentit. |
 | Yhteensä | 8    |
 
-### Aikaa käytetty yhteensä: 43 tuntia
+### Viikko 6
+| pvm | aika (h) | mitä tein  |
+| :----:|:-----| :-----|
+| 14.10. | 2    | Käyttöliittymän viimeistelyä ja dokumentaation kirjoittamista |
+| 15.10. | 3    | Pieniä muutoksia ohjelmaan, dokumentaation kirjoittamista sekä tehokkuustestien suorittamista |
+| 16.10. | 2    | Pieniä muutoksia ohjelmaan sekä vertaisarvioinnin tekeminen |
+| Yhteensä | 7    |
+
+### Aikaa käytetty yhteensä: 50 tuntia
