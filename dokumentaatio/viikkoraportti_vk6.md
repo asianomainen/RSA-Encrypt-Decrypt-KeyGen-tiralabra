@@ -13,4 +13,4 @@ Viikko kului pienten muutosten tekemiseen ohjelmassa, dokumentaation kirjoittami
 Kaikki sujui tällä viikolla mutkitta. Ohjelma on nyt mielestäni valmis ja kaikki sovitut tietorakenteet on toteutettu itse; tähän kaipaisin vielä varmistuksen, että onhan ohjelma tarpeeksi laaja?
 
 ## Mitä teen seuraavaksi
-Keskityn dokumentaation kirjoittamiseen sekä testien krijoittamiseen.
+Keskityn dokumentaation kirjoittamiseen sekä testien kirjoittamiseen.
