@@ -67,7 +67,7 @@ public class KeyGenerator {
 
         // Suoritetaan Miller-Rabinin testi 40 kertaa
         for (int i = 0; i < 40; i++) {
-            if (!millerRabin(n, random)) {
+            if (!millerRabin(n)) {
                 return false;
             }
         }
@@ -79,45 +79,47 @@ public class KeyGenerator {
      * Suorittaa Miller-Rabinin alkulukutestin.
      *
      * @param n      testattava BiInteger
-     * @param random SecureRandom satunnaisen luvun luomiseen
      * @return true jos luku on alkuluku, false jos ei ole
      */
 
-    public boolean millerRabin(BigInteger n, SecureRandom random) {
-        // Varmistaa, että 1 < temp < n
-        BigInteger temp;
-        do {
-            temp = new BigInteger(n.bitLength() - 1, random);
-        } while (temp.compareTo(BigInteger.ONE) <= 0);
+    public boolean millerRabin(BigInteger n) {
+        SecureRandom random = new SecureRandom();
 
-        // n ei ole alkuluku mikäli sillä on yhteinen tekijä temp-luvun kanssa
-        if (!n.gcd(temp).equals(BigInteger.ONE)) {
+        // Varmistaa, että 1 < a < n
+        BigInteger a;
+        do {
+            a = new BigInteger(n.bitLength() - 1, random);
+        } while (a.compareTo(BigInteger.ONE) <= 0);
+
+        // n ei ole alkuluku mikäli sillä on lukua 1
+        // suurempi yhteinen tekijä temp-luvun kanssa
+        if (!n.gcd(a).equals(BigInteger.ONE)) {
             return false;
         }
 
-        BigInteger a = n.subtract(BigInteger.ONE);
+        BigInteger d = n.subtract(BigInteger.ONE);
 
-        // Selvittää suurimman kahden potenssin k, joka jakautuu tasaisesti n-1:een
+        // Selvittää suurimman kahden potenssin, joka jakautuu tasaisesti n-1:een
         int k = 0;
-        while ((a.mod(BigInteger.TWO)).equals(BigInteger.ZERO)) {
-            a = a.divide(BigInteger.TWO);
+        while ((d.mod(BigInteger.TWO)).equals(BigInteger.ZERO)) {
+            d = d.divide(BigInteger.TWO);
             k++;
         }
 
-        BigInteger r = temp.modPow(a, n);
+        BigInteger current = a.modPow(d, n);
 
-        // Mikäli r = 1, niin n on todennäköisesti alkuluku
-        if (r.equals(BigInteger.ONE)) {
+        // Mikäli d = 1, niin n on todennäköisesti alkuluku
+        if (current.equals(BigInteger.ONE)) {
             return true;
         }
 
         // Muuten katsotaan tuleeko luvusta koskaan -1, kun sitä
         // korotetaan toistuvasti toiseen potenssiin
-        for (int i = 0; i < k; i++) {
-            if (r.equals(n.subtract(BigInteger.ONE))) {
+        for (int r = 0; r < k; r++) {
+            if (current.equals(n.subtract(BigInteger.ONE))) {
                 return true;
             } else {
-                r = r.modPow(BigInteger.TWO, n);
+                current = current.modPow(BigInteger.TWO, n);
             }
         }
 
