@@ -78,7 +78,7 @@ public class KeyGenerator {
     /**
      * Suorittaa Miller-Rabinin alkulukutestin.
      *
-     * @param n      testattava BiInteger
+     * @param n testattava BigInteger
      * @return true jos luku on alkuluku, false jos ei ole
      */
 
@@ -108,12 +108,12 @@ public class KeyGenerator {
 
         BigInteger current = a.modPow(d, n);
 
-        // Mikäli d = 1, niin n on todennäköisesti alkuluku
+        // Mikäli current = 1, niin n on todennäköisesti alkuluku
         if (current.equals(BigInteger.ONE)) {
             return true;
         }
 
-        // Muuten katsotaan tuleeko luvusta koskaan -1, kun sitä
+        // Muuten katsotaan tuleeko luvusta koskaan n-1, kun sitä
         // korotetaan toistuvasti toiseen potenssiin
         for (int r = 0; r < k; r++) {
             if (current.equals(n.subtract(BigInteger.ONE))) {
