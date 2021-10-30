@@ -50,4 +50,26 @@ Avaimen pituus bitteinä | Salauksen vahvuus | Keskiarvo (10 suorituskertaa)|
 
 ## Testisyötteet
 
-Testeissä käytetyt syötteet on kuvattu EncryptDecryptTest-luokassa. Syöte on aina salattava viesti.
+Yksikkötesteissä käytetyt syötteet on kuvattu EncryptDecryptTest-luokassa. Syöte on aina salattava viesti.  
+Järjestelmätestauksessa on mahdollista syöttää käyttäjän haluama viesti
+
+
+## Testien suorittaminen
+
+Sovelluksen testit voi ajaa komennolla
+
+```
+mvn test
+```
+
+Testikattavuusraportin voi luoda komennolla
+
+```
+mvn jacoco:report
+```
+
+Kattavuusraporttia voi tarkastella projektin juuresta löytyvästä tiedostosta **target/site/jacoco/index.html** tai esimerkiksi Chromium-selaimessa komennolla (edellyttää Chromium-selaimen asennuksen)
+
+```
+chromium-browser target/site/jacoco/index.html
+```
