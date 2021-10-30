@@ -2,7 +2,6 @@ package rsatoolapp;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import rsatoolapp.domain.EncryptDecrypt;
 import rsatoolapp.domain.KeyGenerator;
 import rsatoolapp.domain.RSAKey;
@@ -15,7 +14,7 @@ public class EncryptDecryptTest {
     private static KeyGenerator kg;
     private static EncryptDecrypt ed;
 
-    @BeforeAll
+    @BeforeClass
     public static void setUp() {
         kg = new KeyGenerator();
         ed = new EncryptDecrypt();
