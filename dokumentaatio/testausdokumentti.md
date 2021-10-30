@@ -31,9 +31,16 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 ## Suorituskykytestaus
 Suorituskykytestaus on suoritettu erillisellä ohjelmalla, joka suorittaa vain avaimien luonnin ja mittaa siinä käytetyn ajan.
 
-Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **3,79s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
+Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **3,93s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
 
-Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **38,56s** (keskiarvo kymmenen suorituskerran jälkeen).
+Vertailun vuoksi testataan ohjelmaa neljällä eri pituisella avaimella:
+
+Avaimen pituus bitteinä | Salauksen vahvuus | Keskiarvo (10 suorituskertaa)|
+-----|----------|-------------|
+512 | Heikko | 0,05s |
+1024 | Kohtalainen | 0,43s |
+2048 | Vahva | 3,93s |
+4096 | Todella vahva | 40,11s |
 
 ## Testisyötteet
 
