@@ -1,6 +1,6 @@
 package rsatoolapp;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import rsatoolapp.domain.KeyGenerator;
 import rsatoolapp.domain.RSAKey;
@@ -10,27 +10,26 @@ import java.math.BigInteger;
 import static org.junit.Assert.*;
 
 public class KeyGeneratorTest {
-    KeyGenerator kg;
+    private static KeyGenerator kg;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         kg = new KeyGenerator();
+        kg.generateKeys();
     }
+
     @Test
     public void publicKeyIsGenerated() {
-        kg.generateKeys();
         assertNotNull(kg.getPublicKey());
     }
 
     @Test
     public void privateKeyIsGenerated() {
-        kg.generateKeys();
         assertNotNull(kg.getPrivateKey());
     }
 
     @Test
     public void publicKeysDoNotMatchIfGeneratedAgain() {
-        kg.generateKeys();
         RSAKey publicKey1 = kg.getPublicKey();
 
         kg.generateKeys();
@@ -41,7 +40,6 @@ public class KeyGeneratorTest {
 
     @Test
     public void privateKeysDoNotMatchIfGeneratedAgain() {
-        kg.generateKeys();
         RSAKey privateKey1 = kg.getPrivateKey();
 
         kg.generateKeys();
@@ -52,7 +50,6 @@ public class KeyGeneratorTest {
 
     @Test
     public void privateAndPublicKeysDoNotMatch() {
-        kg.generateKeys();
         RSAKey publicKey = kg.getPublicKey();
         RSAKey privateKey = kg.getPrivateKey();
 

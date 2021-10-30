@@ -1,7 +1,8 @@
 package rsatoolapp;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import rsatoolapp.domain.EncryptDecrypt;
 import rsatoolapp.domain.KeyGenerator;
 import rsatoolapp.domain.RSAKey;
@@ -11,19 +12,18 @@ import java.math.BigInteger;
 import static org.junit.Assert.*;
 
 public class EncryptDecryptTest {
-    KeyGenerator kg;
-    EncryptDecrypt ed;
+    private static KeyGenerator kg;
+    private static EncryptDecrypt ed;
 
-    @Before
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         kg = new KeyGenerator();
         ed = new EncryptDecrypt();
+        kg.generateKeys();
     }
 
     @Test
     public void messageIsEncrypted() {
-        kg.generateKeys();
-
         String msg = "Secret";
         RSAKey pubKey = kg.getPublicKey();
 
@@ -36,8 +36,6 @@ public class EncryptDecryptTest {
 
     @Test
     public void messageIsDecrypted() {
-        kg.generateKeys();
-
         String msg = "Secret";
         RSAKey pubKey = kg.getPublicKey();
         RSAKey pvtKey = kg.getPrivateKey();
@@ -52,8 +50,6 @@ public class EncryptDecryptTest {
 
     @Test
     public void differentMessageDoesNotHaveTheSameEncryptedMessage() {
-        kg.generateKeys();
-
         String msg = "Secret";
         RSAKey pubKey = kg.getPublicKey();
 
@@ -70,8 +66,6 @@ public class EncryptDecryptTest {
 
     @Test
     public void decryptedMessagesDoNotEqualIfDecryptedWithWrongKey() {
-        kg.generateKeys();
-
         String msg = "Secret";
         RSAKey pubKey = kg.getPublicKey();
         RSAKey pvtKey = kg.getPrivateKey();
