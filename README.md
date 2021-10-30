@@ -32,6 +32,20 @@ Sovelluksen voi käynnistää komennolla
 mvn compile exec:java -Dexec.mainClass=rsatoolapp.Main
 ```
 
+### Suoritettavan jar-tiedoston luominen
+
+jar-tiedosto luodaan komennolla
+
+```
+mvn package
+```
+
+Luotu tiedosto löytyy target-hakemistosta. jar-tiedoston pystyy käynnistämään komennolla
+
+```
+java -jar target/RSAtoolApplication-1.0-SNAPSHOT.jar
+```
+
 ### Testaus
 
 Sovelluksen testit voi ajaa komennolla
