@@ -54,6 +54,15 @@ Miller-Rabinin testin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan my
 ## Tilavaativuudet
 RSA-salauksessa käytetyt algoritmit tarvitsevat vain yksittäisiä muuttujia, joten kaikkien käytettyjen algoritmien tilavaativuus on O(1).
 
+## Suorituskykyvertailu eri pituisilla avaimilla
+
+Avaimen pituus bitteinä | Salauksen vahvuus | Keskiarvo (10 suorituskertaa)|
+-----|----------|-------------|
+512 | Heikko | 0,05s |
+1024 | Kohtalainen | 0,43s |
+2048 | Vahva | 3,93s |
+4096 | Todella vahva | 40,11s |
+
 ## Ohjelman mahdolliset kehityskohteet
 Avaimien generointi tällä hetkellä kestää 2048-bittisellä avaimella 3,93s (keskiarvo kymmenen suorituskerran jälkeen). Vastaavasti Javan valmista Security-kirjastoa käyttämällä samoilla parametreilla aikaa kuluu 0,61s. Ohjelmassa on siis optimoinnin varaa avaimien generoinnissa.
 
@@ -65,4 +74,3 @@ Ohjelmassa ei toistaiseksi pysty salata viestiä yksityisellä avaimella, jota v
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
 [AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)  
 [Laajennettu Eukleideen algoritmi](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm)  
-[RSA-avaimien pituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths)
