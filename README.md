@@ -5,7 +5,8 @@ RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytett
 ## Dokumentaatio
 [Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)  
 [Toteutusdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)  
-[Testausdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/testausdokumentti.md)
+[Testausdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/testausdokumentti.md)  
+[Käyttöohje](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/kayttohje.md)
 
 ### Viikkoraportit
 [Viikko 1](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk1.md)  
