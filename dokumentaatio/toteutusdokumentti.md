@@ -55,6 +55,8 @@ Miller-Rabinin testin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan my
 RSA-salauksessa käytetyt algoritmit tarvitsevat vain yksittäisiä muuttujia, joten kaikkien käytettyjen algoritmien tilavaativuus on O(1).
 
 ## Ohjelman mahdolliset kehityskohteet
+Avaimien generointi tällä hetkellä kestää 2048-bittisellä avaimella 3,93s (keskiarvo kymmenen suorituskerran jälkeen). Vastaavasti Javan valmista Security-kirjastoa käyttämällä samoilla parametreilla aikaa kuluu 0,61s. Ohjelmassa on siis optimoinnin varaa avaimien generoinnissa.
+
 RSA-avaimien generoinnissa avaimet usein enkoodataan X509- (julkinen avain) tai PKCS8-muotoon (yksityinen avain), jotta niitä voi jakaa. Ohjelmassa enkoodausta ei ole suoritettu ja sen voisi toteuttaa.  
 
 Ohjelmassa ei toistaiseksi pysty salata viestiä yksityisellä avaimella, jota voisi käyttää viestin lähettäjän tunnistamiseen. 
