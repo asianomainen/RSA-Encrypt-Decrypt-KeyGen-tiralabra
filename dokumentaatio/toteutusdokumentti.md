@@ -54,7 +54,7 @@ Miller-Rabinin testin suorittamisen jälkeen RSA-avaimien luomiseen tarvitaan my
 ## Tilavaativuudet
 RSA-salauksessa käytetyt algoritmit tarvitsevat vain yksittäisiä muuttujia, joten kaikkien käytettyjen algoritmien tilavaativuus on O(1).
 
-## Suorituskykytestaus
+## Suorituskykyvertailu eri pituisilla avaimilla
 Ohjelmassa on toteutettu RSA-avainpari **2048-bittisenä**, jonka luominen tällä hetkellä ohjelmassa käytössä olevalla tavalla kestää **3,79s** (keskiarvo kymmenen suorituskerran jälkeen). 2048-bitin pituus on [tällä hetkellä suositeltu vähimmäispituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths).
 
 Vertailun vuoksi testataan ohjelmaa myös **4096-bittisillä avaimilla**, joka vastaa jo yli 128-bitin symmetristä salausta. Tällöin avaimien luominen kestää **38,56s** (keskiarvo kymmenen suorituskerran jälkeen).
