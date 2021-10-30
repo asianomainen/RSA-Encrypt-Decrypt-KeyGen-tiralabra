@@ -64,4 +64,5 @@ Ohjelmassa ei toistaiseksi pysty salata viestiä yksityisellä avaimella, jota v
 ## Lähteet
 [Miller-Rabinin testi](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)  
 [AKS-alkulukutesti](https://en.wikipedia.org/wiki/AKS_primality_test)  
+[Laajennettu Eukleideen algoritmi](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm)  
 [RSA-avaimien pituus](https://en.wikipedia.org/wiki/Key_size#Asymmetric_algorithm_key_lengths)
