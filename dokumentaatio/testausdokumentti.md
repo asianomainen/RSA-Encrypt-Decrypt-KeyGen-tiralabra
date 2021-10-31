@@ -28,9 +28,7 @@ KeyGenerator-luokan kuvassa näkyvä rivikattavuuden puutos on ääritapaus, joh
 
 ## Järjestelmätestaus
 
-Sovelluksen järjestelmätestaus on suoritettu manuaalisesti ja kaikki toiminnot on todeuttu toimivaksi. Huomioitavaa kuitenkin on, että ohjelma heittää virheitä mikäli
-  - tekstiä yritetään salata/purkaa ilman avaimia
-  - tesktiä ei syötetä ja se yritetään salata/purkaa
+Sovelluksen järjestelmätestaus on suoritettu manuaalisesti ja kaikki toiminnot on todeuttu toimivaksi.
 
 ![Program](https://user-images.githubusercontent.com/46067482/139543140-5d78b747-aa21-49b3-bd1b-22e3c013c997.png)
 
