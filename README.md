@@ -16,6 +16,10 @@ RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytett
 [Viikko 5](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk5.md)  
 [Viikko 6](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk6.md)  
 
+## Release
+
+[Loppupalautus](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/releases/tag/v1.1) (katso ohjeet ohjelman käynnistämiseen [käyttöohjeista](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/kayttohje.md)).
+
 ## Javan versio
 
 Sovellus on toteutettu ja testattu Javan versiolla 11.
