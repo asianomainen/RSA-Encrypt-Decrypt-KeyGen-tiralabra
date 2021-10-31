@@ -65,4 +65,14 @@ public class KeyGeneratorTest {
     public void compositeNumberIsNotPrime() {
         assertFalse(kg.isPrime(BigInteger.TEN));
     }
+
+    @Test
+    public void primeNumberPassesMillerRabinTest() {
+        assertTrue(kg.millerRabin(new BigInteger("7")));
+    }
+
+    @Test
+    public void primeNumberIsPrime() {
+        assertTrue(kg.isPrime(new BigInteger("7")));
+    }
 }
