@@ -4,7 +4,7 @@ Ohjelma on toteutettu ja testattu Javan versiolla 11 Linux käyttöjärjestelmä
 
 ## Ohjelman käynnistäminen
 
-Ohjelma käynnistetään lataamalla viimeisimmän [releasen](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/releases/tag/v.1.0) jar-tiedosto, siirtymällä sen jälkeen ladatun tiedoston sisältävään hakemistoon (esim. Downloads) ja suorittamalla komennon 
+Ohjelma käynnistetään lataamalla viimeisimmän [releasen](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/releases/tag/v1.1) jar-tiedosto, siirtymällä sen jälkeen ladatun tiedoston sisältävään hakemistoon (esim. Downloads) ja suorittamalla komennon 
 ```
 java -jar RSATool.jar
 ```
