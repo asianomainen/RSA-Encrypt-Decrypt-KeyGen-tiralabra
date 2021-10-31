@@ -65,15 +65,19 @@ public class RSAToolUi extends Application {
         });
 
         mainMenuUi.btnDecrypt.setOnAction(event -> {
-            if (Objects.equals(mainMenuUi.decryptTextArea.getText(), "")) {
+            if (Objects.equals(mainMenuUi.commonModulusArea.getText(), "")) {
+                Alert noKeysGenerated = new Alert(Alert.AlertType.ERROR);
+                noKeysGenerated.setContentText("RSA-avainparia ei ole luotu.");
+                noKeysGenerated.show();
+            } else if (Objects.equals(mainMenuUi.decryptTextArea.getText(), "")) {
                 Alert noEncryptedTextEntered = new Alert(Alert.AlertType.ERROR);
-                noEncryptedTextEntered.setContentText("Purettavaa viestiä ei ole syötetty.");
+                noEncryptedTextEntered.setContentText("Syötä purettava viesti.");
                 noEncryptedTextEntered.show();
-            } else if (Pattern.matches("[a-zA-Z]+", mainMenuUi.decryptTextArea.getText())) {
+            } else if (!Pattern.matches("[0-9]+", mainMenuUi.decryptTextArea.getText())) {
                 Alert invalidEncryptedText = new Alert(Alert.AlertType.ERROR);
                 invalidEncryptedText.setContentText("Salattu teksti saa sisältää vain numeroita.");
                 invalidEncryptedText.show();
-            }else {
+            } else {
                 encDec.decrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.privateExponentArea.getText()), new BigInteger(mainMenuUi.decryptTextArea.getText()));
                 mainMenuUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
             }
