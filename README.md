@@ -5,7 +5,8 @@ RSA-avainparien luomiseen, viestin salaamiseen ja salauksen purkamiseen käytett
 ## Dokumentaatio
 [Määrittelydokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)  
 [Toteutusdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)  
-[Testausdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/testausdokumentti.md)
+[Testausdokumentti](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/testausdokumentti.md)  
+[Käyttöohje](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/kayttohje.md)
 
 ### Viikkoraportit
 [Viikko 1](https://github.com/asianomainen/RSA-Encrypt-Decrypt-KeyGen-tiralabra/blob/main/dokumentaatio/viikkoraportti_vk1.md)  
@@ -29,6 +30,20 @@ Sovelluksen voi käynnistää komennolla
 
 ```
 mvn compile exec:java -Dexec.mainClass=rsatoolapp.Main
+```
+
+### Suoritettavan jar-tiedoston luominen
+
+jar-tiedosto luodaan komennolla
+
+```
+mvn package
+```
+
+Luotu tiedosto löytyy target-hakemistosta. jar-tiedoston pystyy käynnistämään komennolla
+
+```
+java -jar target/RSAtoolApplication-1.0-SNAPSHOT.jar
 ```
 
 ### Testaus
