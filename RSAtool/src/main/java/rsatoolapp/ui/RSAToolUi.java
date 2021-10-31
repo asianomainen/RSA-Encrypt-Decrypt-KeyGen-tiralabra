@@ -46,7 +46,7 @@ public class RSAToolUi extends Application {
                 noKeysGenerated.show();
             } else if (Objects.equals(mainMenuUi.encryptTextArea.getText(), "")) {
                 Alert noTextInserted = new Alert(Alert.AlertType.ERROR);
-                noTextInserted.setContentText("Syötä salattava teksti.");
+                noTextInserted.setContentText("Syötä salattava viesti.");
                 noTextInserted.show();
             } else {
                 encDec.encrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.publicExponentArea.getText()), mainMenuUi.encryptTextArea.getText());
@@ -57,7 +57,7 @@ public class RSAToolUi extends Application {
         mainMenuUi.btnCopyText.setOnAction(event -> {
             if (Objects.equals(mainMenuUi.encryptedTextArea.getText(), "")) {
                 Alert noEncryptedText = new Alert(Alert.AlertType.ERROR);
-                noEncryptedText.setContentText("Ei kopioitavaa salattua tekstiä.");
+                noEncryptedText.setContentText("Ei kopioitavaa salattua viestiä.");
                 noEncryptedText.show();
             } else {
                 mainMenuUi.decryptTextArea.setText(encDec.getEncryptedMessage().toString());
@@ -75,7 +75,7 @@ public class RSAToolUi extends Application {
                 noEncryptedTextEntered.show();
             } else if (!Pattern.matches("[0-9]+", mainMenuUi.decryptTextArea.getText())) {
                 Alert invalidEncryptedText = new Alert(Alert.AlertType.ERROR);
-                invalidEncryptedText.setContentText("Salattu teksti saa sisältää vain numeroita.");
+                invalidEncryptedText.setContentText("Salattu viesti saa sisältää vain numeroita.");
                 invalidEncryptedText.show();
             } else {
                 encDec.decrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.privateExponentArea.getText()), new BigInteger(mainMenuUi.decryptTextArea.getText()));
