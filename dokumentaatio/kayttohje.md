@@ -39,7 +39,8 @@ Vaihtoehtoisesti voit myös ladata projektin [zip-tiedoston](https://github.com/
 ## Tekstin salaaminen ja purkaminen
 Tekstissä suluissa olevat numerot viittaavat yllä olevan kuvan numeroihin
 1. Paina Generate-nappia (1)
-2. Syötä salattava teksti (3)
+   - Riippuen käytetyn laitteen tehosta, avaimien generointi saattaa kestää 1-15 sekuntia
+3. Syötä salattava teksti (3)
    - Salattava teksti ei voi olla tyhjä
    - Salaus on tässä ohjelmassa toteutettu 2048-bittisenä. Tämä tarkoittaa sitä, että tällä ohjelmalla voi turvallisesti salata korkeintaan 256 tavun (byte) pituisia merkkijonoja, eli käytännössä 256-merkkisiä viestejä.
 4. Paina Decrypt-nappia (4)
