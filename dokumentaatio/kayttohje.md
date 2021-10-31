@@ -37,7 +37,7 @@ Vaihtoehtoisesti voit myös ladata projektin [zip-tiedoston](https://github.com/
    - Sulkee ohjelman
 
 ## Tekstin salaaminen ja purkaminen
-Tekstissä suluissa olevat numerot viittaavat yllä olevan kuvan numeroihin
+Tekstissä suluissa olevat numerot viittaavat yllä olevan kuvan numeroihin.
 1. Paina Generate-nappia (1)
    - Riippuen käytetyn laitteen tehosta, avaimien generointi saattaa kestää 1-15 sekuntia
 3. Syötä salattava teksti (3)
@@ -52,3 +52,32 @@ Tekstissä suluissa olevat numerot viittaavat yllä olevan kuvan numeroihin
 Poistu ohjelmasta painamalla Quit-nappia (10)
 
 Voi halutessasi toistaa vaiheet 2-5 mikäli haluat salata/purkaa tekstiä samoilla avaimilla. Vaihtoehtoisesti voit myös luoda uudet avaimet ja salata/purkaa tekstiä niillä toistamalla vaiheet 1-5.
+
+## Käyttöliittymän virheilmoitukset
+Ohjelman käyttäminen saattaa tietyissä tilanteissa aiheuttaa käyttöliittymässä virheilmoituksen. Tekstissä suluissa olevat numerot viittaavat yllä olevan kuvan numeroihin. Virheilmoitukset ja miten ne korjataan:  
+
+- **"RSA-avainparia ei ole luotu."**
+   - Syy:
+      - tekstiä yritetään salata/purkaa ilman RSA-avaimia
+   - Korjaus:
+      - paina Generate-nappia (1) luodaksesi RSA-avaimet
+- **"Syötä salattava viesti."**
+   - Syy:
+      - salattavaa viestiä ei ole syötetty
+   - Korjaus:
+      - syötä (3) salattava viesti
+- **"Ei kopioitavaa salattua viestiä."**
+   - Syy:
+      - salattua tekstiä ei löydy
+   - Korjaus:
+      - syötä (3) salattava viesti ja paina Encrypt-nappia (4)
+- **"Syötä purettava viesti."**
+   - Syy:
+      - purettavaa viestiä ei löydy
+   - Korjaus:
+      - syötä (7) purettava teksti ja paina Decrypt-nappia (8)
+- **"Salattu viesti saa sisältää vain numeroita."**
+   - Syy:
+      - salattu viestiä sisältää kiellettyjä merkkejä
+   - Korjaus:
+      - tarkista, että olet kopioinut salatun viestin oikein ja paina Decrypt-nappia (8) uudelleen
