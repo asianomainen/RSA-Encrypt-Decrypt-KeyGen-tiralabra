@@ -2,11 +2,14 @@ package rsatoolapp.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import rsatoolapp.domain.EncryptDecrypt;
 import rsatoolapp.domain.KeyGenerator;
 
 import java.math.BigInteger;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * Luokka, joka aloittaa ohjelman ja hallinnoi käyttöliittymän painikkeita.
@@ -37,17 +40,43 @@ public class RSAToolUi extends Application {
         });
 
         mainMenuUi.btnEncrypt.setOnAction(event -> {
-            encDec.encrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.publicExponentArea.getText()), mainMenuUi.encryptTextArea.getText());
-            mainMenuUi.encryptedTextArea.setText(encDec.getEncryptedMessage().toString());
+            if (Objects.equals(mainMenuUi.commonModulusArea.getText(), "")) {
+                Alert noKeysGenerated = new Alert(Alert.AlertType.ERROR);
+                noKeysGenerated.setContentText("RSA-avainparia ei ole luotu.");
+                noKeysGenerated.show();
+            } else if (Objects.equals(mainMenuUi.encryptTextArea.getText(), "")) {
+                Alert noTextInserted = new Alert(Alert.AlertType.ERROR);
+                noTextInserted.setContentText("Syötä salattava teksti.");
+                noTextInserted.show();
+            } else {
+                encDec.encrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.publicExponentArea.getText()), mainMenuUi.encryptTextArea.getText());
+                mainMenuUi.encryptedTextArea.setText(encDec.getEncryptedMessage().toString());
+            }
         });
 
         mainMenuUi.btnCopyText.setOnAction(event -> {
-            mainMenuUi.decryptTextArea.setText(encDec.getEncryptedMessage().toString());
+            if (Objects.equals(mainMenuUi.encryptedTextArea.getText(), "")) {
+                Alert noEncryptedText = new Alert(Alert.AlertType.ERROR);
+                noEncryptedText.setContentText("Ei kopioitavaa salattua tekstiä.");
+                noEncryptedText.show();
+            } else {
+                mainMenuUi.decryptTextArea.setText(encDec.getEncryptedMessage().toString());
+            }
         });
 
         mainMenuUi.btnDecrypt.setOnAction(event -> {
-            encDec.decrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.privateExponentArea.getText()), new BigInteger(mainMenuUi.decryptTextArea.getText()));
-            mainMenuUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
+            if (Objects.equals(mainMenuUi.decryptTextArea.getText(), "")) {
+                Alert noEncryptedTextEntered = new Alert(Alert.AlertType.ERROR);
+                noEncryptedTextEntered.setContentText("Purettavaa viestiä ei ole syötetty.");
+                noEncryptedTextEntered.show();
+            } else if (Pattern.matches("[a-zA-Z]+", mainMenuUi.decryptTextArea.getText())) {
+                Alert invalidEncryptedText = new Alert(Alert.AlertType.ERROR);
+                invalidEncryptedText.setContentText("Salattu teksti saa sisältää vain numeroita.");
+                invalidEncryptedText.show();
+            }else {
+                encDec.decrypt(new BigInteger(mainMenuUi.commonModulusArea.getText()), new BigInteger(mainMenuUi.privateExponentArea.getText()), new BigInteger(mainMenuUi.decryptTextArea.getText()));
+                mainMenuUi.decryptedTextArea.setText(encDec.getDecryptedMessage());
+            }
         });
     }
 
